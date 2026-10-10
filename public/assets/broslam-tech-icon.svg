@@ -1,0 +1,44 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Solid Elegant Corporate Gradients (Natural Mountain Dusk / Dawn theme, NO harsh neon) -->
+    <!-- Slamet Silhouette (Background taller mountain) -->
+    <linearGradient id="slametSilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Bromo Silhouette (Foreground caldera/mountain) -->
+    <linearGradient id="bromoSilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0369A1" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Refined Ridge Line Gradient (Clean Navy Blue to Rich Amber Gold) -->
+    <linearGradient id="ridgeLineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="42%" stop-color="#0EA5E9"/>
+      <stop offset="58%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- SILUET GUNUNG SLAMET (Puncak Kanan Lebih Tinggi & Megah) -->
+  <polygon points="18,44 38,7 46,44" fill="url(#slametSilGrad)" />
+  <!-- Shadow sisi kanan Slamet -->
+  <polygon points="38,7 46,44 38,44" fill="#0A1128" fill-opacity="0.45" />
+
+  <!-- SILUET GUNUNG BROMO (Puncak Kiri dengan kontur khas kawah kaldera) -->
+  <polygon points="4,44 20,20 28,44" fill="url(#bromoSilGrad)" />
+  <!-- Sisi kanan Bromo -->
+  <polygon points="20,20 28,44 20,44" fill="#075985" fill-opacity="0.45" />
+
+  <!-- GARIS KONTUR PUNCAK RIDGE (Sesuai Sketsa: naik ke Bromo, belok di bahu, naik ke Slamet) -->
+  <polyline points="5,41 20,20 26,17 38,8" 
+    stroke="url(#ridgeLineGrad)" 
+    stroke-width="3" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" />
+
+  <!-- Aksen Puncak Slamet (Clean dot, bukan panah) -->
+  <circle cx="38" cy="8" r="2" fill="#FBBF24" />
+</svg>

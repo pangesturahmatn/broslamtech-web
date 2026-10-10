@@ -1,0 +1,59 @@
+<svg width="260" height="60" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cyan to Gold Rising Gradient matching user sketch -->
+    <linearGradient id="broslamLineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="45%" stop-color="#38BDF8"/>
+      <stop offset="55%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur2" />
+      <feComposite in="SourceGraphic" in2="blur2" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- ICON: Exact ascending profit line according to user's sketch -->
+  <!-- Segment 1: Rise from bottom-left to Bromo crest (10,50 -> 24,28) -->
+  <!-- Segment 2: Transition shoulder / intermediate slope (24,28 -> 32,24) -->
+  <!-- Segment 3: Surge upwards to Slamet apex (32,24 -> 48,6) -->
+  <g transform="translate(4, 2)">
+    <!-- Ambient Neon Blur Layer -->
+    <polyline points="8,52 24,28 32,24 48,8" 
+      stroke="url(#broslamLineGrad)" 
+      stroke-width="8" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      opacity="0.35" 
+      filter="url(#softGlow)"/>
+
+    <!-- Core Sharp Vector Line -->
+    <polyline points="8,52 24,28 32,24 47,9" 
+      stroke="url(#broslamLineGrad)" 
+      stroke-width="3.5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      filter="url(#neonGlow)"/>
+
+    <!-- Sharp Upward Arrowhead at Apex -->
+    <polygon points="48,5 54,14 43,11" fill="#FFB703" />
+
+    <!-- Subtle Apex Glowing Particle -->
+    <circle cx="48" cy="8" r="2" fill="#FFFFFF"/>
+  </g>
+
+  <!-- TYPOGRAPHY: BroSlam.Tech -->
+  <text x="68" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="22" fill="#FFFFFF" letter-spacing="-0.4">
+    BroSlam<tspan fill="#FFB703">.Tech</tspan>
+  </text>
+  <text x="69" y="46" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="7.5" fill="#94A3B8" letter-spacing="1.4">
+    BROMO &amp; SLAMET PROFIT ENGINE
+  </text>
+</svg>
