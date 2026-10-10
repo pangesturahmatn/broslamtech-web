@@ -34,7 +34,7 @@ export const pricingTiers: PricingTier[] = [
     name: "Pro Growth (Lengkap)",
     subtitle: "Paling Diminati Pemilik Bengkel Indonesia",
     pricePerMonth: "Rp 799.000",
-    priceDailyNote: "Setara harga 1 botol oli saja!",
+    priceDailyNote: "Setara harga 1 galon oli saja!",
     targetAudience: "Untuk bengkel ramai (4–8 stall) yang butuh anti-curang & WA.",
     isPopular: true,
     features: [
