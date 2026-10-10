@@ -7,6 +7,10 @@ import EcosystemPillars from "../components/EcosystemPillars";
 import DeviceShowcase from "../components/DeviceShowcase";
 import ProfitCalculator from "../components/ProfitCalculator";
 import ComparisonSection from "../components/ComparisonSection";
+import PricingSection from "../components/PricingSection";
+import PortfolioSection from "../components/PortfolioSection";
+import TeamSection from "../components/TeamSection";
+import AppWarrantySection from "../components/AppWarrantySection";
 import FaqSection from "../components/FaqSection";
 import NewsPortal from "../components/NewsPortal";
 import Footer from "../components/Footer";
@@ -26,7 +30,7 @@ export default function HomePage() {
       <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
 
       <main>
-        {/* 2. Hero Section */}
+        {/* 2. Hero Section (Cover) */}
         <HeroSection
           onOpenConsultation={() => setIsConsultationOpen(true)}
           onOpenCatalog={() => setIsCatalogOpen(true)}
@@ -38,23 +42,35 @@ export default function HomePage() {
           onOpenCatalogModal={() => setIsCatalogOpen(true)}
         />
 
-        {/* 4. Device Showcase */}
+        {/* 4. Device Showcase (Desktop Pusat, TV Stall, Mobile SA) */}
         <DeviceShowcase />
 
         {/* 5. Profit & Leakage Calculator */}
         <ProfitCalculator />
 
-        {/* 6. Comparison Section */}
+        {/* 6. Pricing Section (Starter Rp 399k, Pro Growth Rp 799k, Enterprise Rp 1.499k) */}
+        <PricingSection />
+
+        {/* 7. Comparison Section (vs POS Ritel vs Excel) */}
         <ComparisonSection />
 
-        {/* 7. FAQ Section */}
+        {/* 8. Portfolio Section (Arumsari all cabang, Bengkel Tomo, dll) */}
+        <PortfolioSection />
+
+        {/* 9. 5 Halaman Roadmap & Jaminan Warranty */}
+        <AppWarrantySection />
+
+        {/* 10. Dewan Eksekutif (Fuad, Utomo, Pangestu, Nisa) */}
+        <TeamSection />
+
+        {/* 11. FAQ Section */}
         <FaqSection />
 
-        {/* 8. News & Insights Portal */}
+        {/* 12. News & Promo Portal */}
         <NewsPortal />
       </main>
 
-      {/* 9. Footer */}
+      {/* 13. Footer */}
       <Footer />
 
       {/* Modals */}

@@ -1,167 +1,185 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Menu, X, Sparkles, ShieldCheck } from "lucide-react";
+import { ShieldCheck, ChevronRight, Menu, X, ExternalLink, Sparkles, LogIn, Users, Tag } from "lucide-react";
 
 interface NavbarProps {
   onOpenConsultation?: () => void;
 }
 
 export default function Navbar({ onOpenConsultation }: NavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-950/85 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Brand Logo Group */}
+        <div className="flex items-center justify-between h-20">
+          
+          {/* Brand Logo & Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 shrink-0 rounded-xl overflow-hidden border border-amber-500/30 bg-slate-900/60 p-1 shadow-lg group-hover:scale-105 transition-transform">
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-blue-500/20 bg-slate-900 flex items-center justify-center border border-slate-800 group-hover:border-amber-400/50 transition-colors">
               <Image
                 src="/assets/broslam-globe-logo.png"
                 alt="BroSlam.Tech Logo"
-                fill
+                width={40}
+                height={40}
                 className="object-contain"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <div className="text-xl font-black tracking-tight text-white flex items-center">
-                <span>BroSlam</span>
-                <span className="text-amber-400 font-extrabold">.Tech</span>
-              </div>
-              <span className="text-[9.5px] uppercase tracking-widest text-slate-400 font-semibold -mt-1 hidden sm:block">
-                Super Platform Bengkel
+              <span className="text-lg font-black text-white tracking-tight leading-none group-hover:text-amber-400 transition-colors">
+                BroSlam<span className="text-amber-400">.Tech</span>
+              </span>
+              <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-1">
+                Super Platform Digital
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-300">
-            <a href="#solusi" className="hover:text-amber-400 transition-colors">
-              Our Value
-            </a>
-            <a href="#showcase" className="hover:text-amber-400 transition-colors">
-              Our Ecosystem
-            </a>
-            <a href="#kalkulator" className="hover:text-amber-400 transition-colors">
-              Calculator
-            </a>
-            <a href="#portal-berita" className="hover:text-amber-400 transition-colors">
-              News &amp; Wawasan
-            </a>
-            <a
-              href="https://wa.me/6281359433350?text=Halo%20Pak%20Tomo,%20saya%20tertarik%20konsultasi%20BroSlam.Tech%20SaaS"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors"
-            >
-              Contact Us
-            </a>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-300">
+            <Link href="/#solusi" className="hover:text-amber-400 transition-colors">
+              10 Pilar Sistem
+            </Link>
+            <Link href="/#showcase" className="hover:text-amber-400 transition-colors">
+              Antarmuka Layar
+            </Link>
+            <Link href="/#kalkulator" className="hover:text-amber-400 transition-colors">
+              Kalkulator Bocor
+            </Link>
+            <Link href="/#harga" className="hover:text-amber-400 transition-colors text-amber-300">
+              Harga Sewa
+            </Link>
+            <Link href="/#portofolio" className="hover:text-amber-400 transition-colors">
+              Portofolio
+            </Link>
+            <Link href="/tentang-kami" className="hover:text-amber-400 transition-colors flex items-center gap-1">
+              <span>Tentang Kami</span>
+              <span className="px-1.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-[9px] font-black">4 Tim</span>
+            </Link>
+            <Link href="/#portal-berita" className="hover:text-amber-400 transition-colors">
+              Berita &amp; Promo
+            </Link>
           </nav>
 
-          {/* Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
-            {/* Direct Login Portal button to app.broslamtech.com/login */}
+          {/* Right Action Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
             <a
               href="https://app.broslamtech.com/login"
-              className="px-4 py-2 rounded-xl text-xs font-bold text-slate-200 hover:text-white border border-slate-700/80 bg-slate-900/60 hover:bg-slate-800 transition-all shadow-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 text-slate-200 border border-slate-700 font-bold text-xs flex items-center gap-2 transition-all cursor-pointer shadow-sm hover:border-slate-600"
             >
-              Login Portal
+              <LogIn className="w-3.5 h-3.5 text-amber-400" />
+              <span>Portal Tenant</span>
+              <ExternalLink className="w-3 h-3 text-slate-500" />
             </a>
+
             <button
+              type="button"
               onClick={onOpenConsultation}
-              className="px-4 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 transition-all shadow-md shadow-amber-500/20 flex items-center gap-1.5 cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-xs tracking-wide shadow-lg shadow-amber-500/20 transition-all cursor-pointer active:scale-95 flex items-center gap-1.5"
             >
-              <span>Register Now</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Coba Demo</span>
             </button>
           </div>
 
-          {/* Mobile hamburger button */}
-          <div className="lg:hidden flex items-center gap-2">
-            <a
-              href="https://app.broslamtech.com/login"
-              className="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 border border-slate-700 text-slate-200"
-            >
-              Login
-            </a>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-300 hover:text-white"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile Menu Toggle Button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-5 space-y-4 text-sm font-semibold text-slate-200 animate-in fade-in duration-200">
-          <a
-            href="#solusi"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-amber-400"
-          >
-            Our Value
-          </a>
-          <a
-            href="#showcase"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-amber-400"
-          >
-            Our Ecosystem
-          </a>
-          <a
-            href="#kalkulator"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-amber-400"
-          >
-            Calculator
-          </a>
-          <a
-            href="#portal-berita"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-1 hover:text-amber-400"
-          >
-            News &amp; Wawasan
-          </a>
-          <a
-            href="https://wa.me/6281359433350?text=Halo%20Pak%20Tomo,%20saya%20tertarik%20konsultasi%20BroSlam.Tech"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block py-1 hover:text-amber-400 text-emerald-400"
-          >
-            WhatsApp Pak Tomo (081359433350)
-          </a>
-          <div className="pt-3 border-t border-slate-800 flex gap-2">
+        <div className="md:hidden bg-slate-950/95 border-b border-slate-800 px-6 py-6 space-y-4 animate-in slide-in-from-top-2">
+          <nav className="flex flex-col space-y-3 text-sm font-semibold text-slate-300">
+            <Link
+              href="/#solusi"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400"
+            >
+              10 Pilar Sistem
+            </Link>
+            <Link
+              href="/#showcase"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400"
+            >
+              Antarmuka Layar
+            </Link>
+            <Link
+              href="/#kalkulator"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400"
+            >
+              Kalkulator Bocor
+            </Link>
+            <Link
+              href="/#harga"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400 text-amber-300"
+            >
+              Harga Sewa
+            </Link>
+            <Link
+              href="/#portofolio"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400"
+            >
+              Portofolio Bengkel
+            </Link>
+            <Link
+              href="/tentang-kami"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400 text-blue-400"
+            >
+              Tentang Kami (Tim 4 Orang)
+            </Link>
+            <Link
+              href="/#portal-berita"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400"
+            >
+              Berita &amp; Promo
+            </Link>
+            <Link
+              href="/admin/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-amber-400 text-amber-400"
+            >
+              ✍️ Panel Admin Promo &amp; Blog
+            </Link>
+          </nav>
+
+          <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
+            <a
+              href="https://app.broslamtech.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 text-center rounded-xl bg-slate-900 border border-slate-700 text-slate-200 font-bold text-xs"
+            >
+              Portal Tenant SaaS
+            </a>
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 if (onOpenConsultation) onOpenConsultation();
               }}
-              className="w-full py-2.5 rounded-xl text-center text-xs font-black bg-amber-400 text-slate-950"
+              className="w-full py-2.5 text-center rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 font-black text-xs"
             >
-              Register &amp; Konsultasi Demo
+              Konsultasi &amp; Coba Demo
             </button>
           </div>
         </div>

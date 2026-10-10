@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { MessageSquare, ExternalLink, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { MessageSquare, ExternalLink, ShieldCheck, CreditCard } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -33,16 +34,16 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Solusi Bisnis */}
+          {/* Solusi & Harga */}
           <div className="space-y-3">
             <h4 className="text-xs font-black uppercase tracking-wider text-white">
-              Solusi Bisnis
+              Solusi &amp; Harga
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#solusi" className="hover:text-amber-400 transition-colors">Cash &amp; Liquidity Management</a></li>
-              <li><a href="#solusi" className="hover:text-amber-400 transition-colors">Workshop &amp; Stall Operations</a></li>
-              <li><a href="#solusi" className="hover:text-amber-400 transition-colors">Sparepart Supply Chain</a></li>
-              <li><a href="#solusi" className="hover:text-amber-400 transition-colors">Omnichannel CRM &amp; Loyalti</a></li>
+              <li><Link href="/#solusi" className="hover:text-amber-400 transition-colors">10 Pilar Sistem 360°</Link></li>
+              <li><Link href="/#harga" className="hover:text-amber-400 transition-colors text-amber-300 font-bold">Harga Sewa Mulai Rp 399rb</Link></li>
+              <li><Link href="/#portofolio" className="hover:text-amber-400 transition-colors">Portofolio Bengkel Terkemuka</Link></li>
+              <li><Link href="/tentang-kami" className="hover:text-amber-400 transition-colors">Dewan Eksekutif (4 Orang)</Link></li>
             </ul>
           </div>
 
@@ -58,20 +59,30 @@ export default function Footer() {
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
-              <li><a href="#showcase" className="hover:text-amber-400 transition-colors">🖥️ Tampilan Antarmuka Perangkat</a></li>
-              <li><a href="#kalkulator" className="hover:text-amber-400 transition-colors">📊 Kalkulator Kebocoran Uang</a></li>
-              <li><a href="#portal-berita" className="hover:text-amber-400 transition-colors">📰 Portal Berita &amp; Update R&amp;D</a></li>
+              <li><Link href="/#kalkulator" className="hover:text-amber-400 transition-colors">📊 Kalkulator Kebocoran Uang</Link></li>
+              <li><Link href="/#portal-berita" className="hover:text-amber-400 transition-colors">📰 Portal Berita &amp; Promo</Link></li>
+              <li><Link href="/admin/blog" className="hover:text-amber-400 transition-colors text-slate-300">✍️ Panel Admin Berita &amp; Promo</Link></li>
             </ul>
           </div>
 
-          {/* Konsultasi */}
+          {/* Rekening & Konsultasi */}
           <div className="space-y-3">
             <h4 className="text-xs font-black uppercase tracking-wider text-white">
-              Konsultasi Privat
+              Rekening &amp; Konsultasi
             </h4>
-            <p className="text-xs leading-relaxed text-slate-400">
-              Hubungi langsung tim konsultan senior kami untuk demonstrasi privat atau kunjungan bengkel Anda.
-            </p>
+            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block flex items-center gap-1">
+                <CreditCard className="w-3 h-3 text-blue-400" />
+                <span>Rekening Resmi Langganan:</span>
+              </span>
+              <div className="text-xs font-bold text-white font-mono">
+                BLU BCA : 001665391501
+              </div>
+              <div className="text-[11px] text-slate-400">
+                a.n. UTOMO NUGROHO
+              </div>
+            </div>
+
             <a
               href="https://wa.me/6281359433350?text=Halo%20Tim%20BroSlam.Tech,%20saya%20tertarik%20konsultasi%20Super%20Platform"
               target="_blank"

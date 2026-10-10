@@ -1,0 +1,47 @@
+[
+  {
+    "id": "art-1",
+    "category": "Update Sistem",
+    "catTag": "sistem",
+    "isPromo": false,
+    "title": "BroSlam.Tech Resmi Luncurkan 164 Modul Ekosistem Bengkel 360° & Otomasi SAK ETAP",
+    "date": "10 Oktober 2026",
+    "author": "Tim R&D BroSlam.Tech",
+    "imageUrl": "/assets/erp-desktop-dashboard.jpg",
+    "content": "<p><strong>Purwokerto / Jakarta</strong> — BroSlam.Tech resmi mengumumkan perilisan pembaruan besar sistem ERP Bengkel versi 2.5 yang memuat total 164 modul operasional dan 380 endpoint API aktif.</p><br><p>Pembaruan ini mencakup 7 klaster solusi terintegrasi: dari alokasi mekanik di stall, gudang part FIFO, WhatsApp Gateway mandiri, hingga konsolidasi holding multi-cabang.</p>"
+  },
+  {
+    "id": "art-2",
+    "category": "Promo Spesial",
+    "catTag": "promo",
+    "isPromo": true,
+    "promoBadge": "PROMO Q4 2026",
+    "title": "Program Akselerasi Bengkel Digital: Diskon Setup Onboarding & Migrasi Data Excel Gratis",
+    "date": "09 Oktober 2026",
+    "author": "Marketing BroSlam.Tech",
+    "imageUrl": "/assets/modern_workshop_hero.jpg",
+    "content": "<p>Kabar gembira bagi pemilik bengkel mobil yang ingin beralih dari nota kertas manual ke sistem BroSlam.Tech ERP!</p><br><p>Dapatkan free data migration dari file Excel lama, pelatihan kasir & SA, serta pendampingan audit stok awal gratis untuk paket Pro Growth dan Enterprise.</p>"
+  },
+  {
+    "id": "art-3",
+    "category": "Manajemen & Finansial",
+    "catTag": "bisnis",
+    "isPromo": false,
+    "title": "Mengatasi Bocor Halus Rp 20 Juta/Bulan Akibat Selisih Part & Biaya Subkon",
+    "date": "08 Oktober 2026",
+    "author": "Konsultan Finansial Bengkel",
+    "imageUrl": "/assets/erp-tv-stall.jpg",
+    "content": "<p>Sebagian besar pemilik bengkel mobil dengan omset Rp 100 juta – Rp 500 juta per bulan mengalami fenomena 'bengkel ramai tapi kas tidak bertambah'.</p><br><p>Melalui perlindungan rumus modal materialCost murni dan penguncian voucher diskon, BroSlam.Tech memastikan marjin keuntungan bersih Anda tidak tergerus selisih stok.</p>"
+  },
+  {
+    "id": "art-4",
+    "category": "Marketing & Retensi",
+    "catTag": "marketing",
+    "isPromo": false,
+    "title": "Strategi Reminder Berkala 30-60-90 Hari Tanpa Biaya SaaS Gateway Mahal",
+    "date": "05 Oktober 2026",
+    "author": "Spesialis CRM Otomotif",
+    "imageUrl": "/assets/erp-mobile-sa.jpg",
+    "content": "<p>Mempertahankan pelanggan lama yang puas membutuhkan biaya 5x lebih hemat dibandingkan iklan baru.</p><br><p>BroSlam.Tech menghadirkan mesin automasi pesan WhatsApp tanpa perlu berlangganan vendor pihak ketiga yang mahal untuk follow-up servis berkala H+30 dan H+90.</p>"
+  }
+]
