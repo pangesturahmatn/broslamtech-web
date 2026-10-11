@@ -33,7 +33,7 @@ export default function PortfolioSection() {
   const currentClient = clients[currentIndex] || clients[0];
 
   return (
-    <section id="portofolio" className="py-8 sm:py-10 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <section id="portofolio" className="scroll-mt-20 sm:scroll-mt-24 py-8 sm:py-10 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}

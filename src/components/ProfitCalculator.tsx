@@ -21,7 +21,7 @@ export default function ProfitCalculator() {
   };
 
   return (
-    <section id="kalkulator" className="py-8 sm:py-12 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <section id="kalkulator" className="scroll-mt-20 sm:scroll-mt-24 py-8 sm:py-12 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Background glow */}
       
 

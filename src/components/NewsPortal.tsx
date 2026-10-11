@@ -38,7 +38,7 @@ export default function NewsPortal() {
   return (
     <section
       id="portal-berita"
-      className="py-8 sm:py-12 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="scroll-mt-24 py-8 sm:py-12 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Dynamic Ambient Glows (Only in dark mode) */}
       <div className="hidden dark:block absolute top-1/4 left-1/4 w-[500px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -140,8 +140,8 @@ export default function NewsPortal() {
               href={`/blog/${art.slug || art.id}`}
               className={`rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group cursor-pointer relative overflow-hidden backdrop-blur-xl hover:-translate-y-1.5 ${
                 art.isPromo
-                  ? "bg-amber-50/70 dark:bg-gradient-to-b dark:from-slate-900/90 dark:via-slate-900/60 dark:to-slate-950/90 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow-md"
-                  : "bg-white dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.03] dark:to-transparent border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-lg dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-amber-400 dark:hover:border-sky-400/40"
+                  ? "bg-amber-50/50 dark:bg-slate-900 border border-amber-300/80 dark:border-amber-500/40 shadow-sm hover:shadow-md"
+                  : "bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow-md"
               }`}
             >
               <div className="space-y-3.5">
