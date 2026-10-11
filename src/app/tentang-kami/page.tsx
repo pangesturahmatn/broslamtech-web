@@ -16,19 +16,19 @@ export default function TentangKamiPage() {
 
       <main className="pt-28">
         {/* Hero About */}
-        <section className="py-16 sm:py-20 bg-slate-950 relative overflow-hidden">
+        <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
               <Sparkles className="w-3.5 h-3.5" />
               <span>PROFIL PERUSAHAAN &amp; KEPEMIMPINAN</span>
             </div>
             
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Membangun Ekosistem Digital Bengkel Mobil <br className="hidden sm:inline" />
               Paling Tangguh di Indonesia.
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
               BroSlam.Tech lahir dari peleburan dua nama gunung legendaris di Pulau Jawa: <strong>Gunung Bromo &amp; Gunung Slamet</strong>. 
               Melambangkan keteguhan fondasi sistem yang tidak goyah saat menghadapi fluktuasi ekonomi, volume servis padat, maupun ekspansi puluhan cabang bengkel.
             </p>
@@ -45,9 +45,9 @@ export default function TentangKamiPage() {
         <AppWarrantySection />
 
         {/* Bottom CTA */}
-        <section className="py-20 bg-slate-900 border-t border-slate-800 text-center">
+        <section className="py-20 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center transition-colors">
           <div className="max-w-3xl mx-auto px-4 space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-white">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
               Siap Membawa Bengkel Mobil Anda Naik Kelas?
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">

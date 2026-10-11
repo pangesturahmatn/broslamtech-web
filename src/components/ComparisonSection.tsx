@@ -94,7 +94,7 @@ function RenderStatusBadge({ item }: { item: { label: string; status: "no" | "pa
 
 export default function ComparisonSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#070B14] via-[#090E1C] to-[#070B14] relative overflow-hidden border-b border-white/10 transition-colors">
+    <section className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090E1C] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
@@ -102,22 +102,22 @@ export default function ComparisonSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-widest uppercase">
             <span>PERBANDINGAN NYATA</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Mengapa Bengkel Mobil Tidak Cukup Hanya Pakai Excel atau POS Biasa?
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
             Lihat perbedaan mendasar antara software kasir ritel umum dengan BroSlam.Tech ERP yang dirancang spesifik untuk ekosistem bengkel mobil modern.
           </p>
         </div>
 
         {/* Comparison Table */}
-        <div className="overflow-x-auto rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl">
+        <div className="overflow-x-auto rounded-3xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-900/60 backdrop-blur-xl shadow-lg dark:shadow-2xl">
           <table className="w-full text-left text-xs sm:text-sm">
             <thead>
-              <tr className="border-b border-white/10 bg-slate-950/80">
-                <th className="py-5 px-6 font-bold text-slate-200 w-2/5">Fitur &amp; Kebutuhan Kunci</th>
-                <th className="py-5 px-4 font-semibold text-slate-400 text-center w-1/5">Software Kasir Ritel (POS)</th>
-                <th className="py-5 px-4 font-semibold text-slate-400 text-center w-1/5">Excel Manual</th>
+              <tr className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-slate-950/80">
+                <th className="py-5 px-6 font-bold text-slate-900 dark:text-slate-200 w-2/5">Fitur &amp; Kebutuhan Kunci</th>
+                <th className="py-5 px-4 font-semibold text-slate-600 dark:text-slate-400 text-center w-1/5">Software Kasir Ritel (POS)</th>
+                <th className="py-5 px-4 font-semibold text-slate-600 dark:text-slate-400 text-center w-1/5">Excel Manual</th>
                 <th className="py-5 px-4 font-black text-amber-300 text-center w-1/5 bg-amber-500/10 border-l border-amber-500/20">
                   <span className="flex items-center justify-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-amber-400" />
@@ -126,10 +126,10 @@ export default function ComparisonSection() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-200 dark:divide-white/5">
               {rows.map((row, idx) => (
                 <tr key={idx} className="hover:bg-white/[0.03] transition-colors">
-                  <td className="py-4 px-6 font-bold text-slate-200">
+                  <td className="py-4 px-6 font-bold text-slate-900 dark:text-slate-200">
                     {row.feature}
                   </td>
                   <td className="py-4 px-4 text-center font-medium">

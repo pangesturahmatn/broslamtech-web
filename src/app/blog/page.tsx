@@ -41,7 +41,7 @@ export default function BlogListingPage() {
       : articles.filter((a) => a.catTag === selectedCat);
 
   return (
-    <div className="min-h-screen bg-[#070B14] text-white transition-colors flex flex-col justify-between selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-[#070B14] dark:text-white transition-colors flex flex-col justify-between selection:bg-amber-400 selection:text-slate-950">
       <Navbar />
 
       <main className="pt-28 pb-20 flex-1 relative overflow-hidden">
@@ -61,10 +61,10 @@ export default function BlogListingPage() {
               <span>Kembali ke Beranda BroSlam.Tech</span>
             </Link>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Portal Wawasan, Berita &amp; Promo BroSlam.Tech
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               Pusat edukasi manajemen otomotif, arsitektur ERP bengkel, pembaruan rilis sistem, dan penawaran promo resmi.
             </p>
           </div>

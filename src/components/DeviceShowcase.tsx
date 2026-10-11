@@ -57,7 +57,7 @@ export default function DeviceShowcase() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-black tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 dark:bg-slate-900 border border-amber-200 dark:border-slate-800 text-amber-700 dark:text-amber-400 text-xs font-bold tracking-widest uppercase">
             <span>ANTARMUKA SISTEM ENTERPRISE</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
@@ -93,15 +93,15 @@ export default function DeviceShowcase() {
         {/* Window Device Mockup */}
         <div className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
           {/* Top Browser Bar */}
-          <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950/90 border-b border-slate-800">
+          <div className="flex items-center justify-between px-5 py-3.5 bg-slate-100 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-rose-500/80"></span>
               <span className="w-3 h-3 rounded-full bg-amber-500/80"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-500/80"></span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-1 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xs font-mono">
+            <div className="flex items-center gap-2 px-4 py-1 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-xs font-mono">
               <Lock className="w-3 h-3 text-emerald-400" />
-              <span className="text-slate-300">{current.url}</span>
+              <span className="text-slate-700 dark:text-slate-300">{current.url}</span>
             </div>
             <div className="w-12"></div>
           </div>
@@ -117,7 +117,7 @@ export default function DeviceShowcase() {
           </div>
 
           {/* Bottom Bar Info */}
-          <div className="p-6 bg-slate-900/95 border-t border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-6 bg-white dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <h4 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400" />

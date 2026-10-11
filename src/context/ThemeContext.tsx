@@ -23,12 +23,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem("broslam_theme") as Theme;
-    if (saved === "dark") {
-      setThemeState("dark");
+    const initial = saved === "dark" ? "dark" : "light";
+    setThemeState(initial);
+    if (initial === "dark") {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
-      setThemeState("light");
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   }, []);
 
@@ -37,8 +39,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("broslam_theme", t);
     if (t === "dark") {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
     }
   };
 

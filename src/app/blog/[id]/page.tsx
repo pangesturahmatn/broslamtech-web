@@ -24,7 +24,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const related = articlesData.filter((a) => a.id !== id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 flex flex-col justify-between transition-colors selection:bg-amber-500 selection:text-slate-950">
       <Navbar />
 
       <main className="pt-28 pb-20 flex-1">
