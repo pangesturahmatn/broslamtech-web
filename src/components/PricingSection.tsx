@@ -6,7 +6,7 @@ import { Check, Star, ArrowRight, ShieldCheck, CreditCard, Sparkles } from "luci
 
 export default function PricingSection() {
   return (
-    <section id="harga" className="py-24 bg-slate-900 relative overflow-hidden border-t border-slate-800">
+    <section id="harga" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Background glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -17,10 +17,10 @@ export default function PricingSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
             <span>STRATEGI HARGA KHUSUS UMKM BENGKEL MOBIL</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Harga Sewa yang Sangat Ringan di Kantong UMKM
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Dibuat dengan sistem langganan bulanan yang lebih murah dari sebungkus rokok per hari, tapi memberi keuntungan &amp; kendali besar bagi bisnis bengkel Anda.
           </p>
         </div>
@@ -32,8 +32,8 @@ export default function PricingSection() {
               key={tier.id}
               className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all relative ${
                 tier.isPopular
-                  ? "bg-slate-950 border-2 border-amber-400 shadow-2xl shadow-amber-500/15 md:-translate-y-2"
-                  : "bg-slate-950/70 border border-slate-800 hover:border-slate-700 shadow-xl"
+                  ? "bg-white dark:bg-slate-950 border-2 border-amber-400 shadow-xl shadow-amber-500/10 md:-translate-y-2"
+                  : "bg-white dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800 hover:border-slate-300 shadow-md"
               }`}
             >
               {/* Popular ribbon */}
@@ -51,7 +51,7 @@ export default function PricingSection() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-black text-white">
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white">
                     {tier.name}
                   </h3>
                   <p className="text-xs text-slate-400 mt-1">
@@ -62,7 +62,7 @@ export default function PricingSection() {
                 {/* Price block */}
                 <div className="py-2 border-y border-slate-800/80">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                    <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                       {tier.pricePerMonth}
                     </span>
                     <span className="text-xs text-slate-400 font-semibold">/ bln</span>
@@ -73,7 +73,7 @@ export default function PricingSection() {
                 </div>
 
                 {/* Features checklist */}
-                <ul className="space-y-2.5 text-xs text-slate-300 pt-1">
+                <ul className="space-y-2.5 text-xs text-slate-700 dark:text-slate-300 pt-1">
                   {tier.features.map((feat, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2.5 leading-snug">
                       <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
@@ -107,7 +107,7 @@ export default function PricingSection() {
         </div>
 
         {/* Sync Info Note */}
-        <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="p-4 rounded-2xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-xs">
           <div className="flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
             <span>
@@ -115,7 +115,7 @@ export default function PricingSection() {
             </span>
           </div>
 
-          <div className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-[11px] text-slate-300">
+          <div className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] text-slate-800 dark:text-slate-300">
             <CreditCard className="w-3.5 h-3.5 text-blue-400" />
             <span>Metode Pembayaran Resmi: <strong>Transfer Bank BCA</strong> (Invoice diterbitkan setelah registrasi)</span>
           </div>

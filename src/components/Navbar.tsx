@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ExternalLink, Globe, LogIn } from "lucide-react";
+import { Menu, X, ExternalLink, Globe, LogIn, Sun, Moon } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import { useLanguage } from "../context/LanguageContext";
 
 interface NavbarProps {
@@ -13,6 +14,7 @@ interface NavbarProps {
 export default function Navbar({ onOpenConsultation }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10 transition-all">
@@ -65,6 +67,20 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
+            {/* Theme Toggle (☀️ Light / 🌙 Dark) */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all cursor-pointer shadow-xs"
+              title={theme === "light" ? "Beralih ke Mode Gelap" : "Beralih ke Mode Terang"}
+            >
+              {theme === "light" ? (
+                <Moon className="w-3.5 h-3.5 text-amber-300" />
+              ) : (
+                <Sun className="w-3.5 h-3.5 text-amber-400" />
+              )}
+            </button>
+
             {/* Language Switcher Pill */}
             <button
               type="button"
@@ -97,8 +113,15 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
             </button>
           </div>
 
-          {/* Mobile Menu & Lang Toggle */}
+          {/* Mobile Menu & Lang/Theme Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-1.5 rounded-full bg-white/10 border border-white/20 text-white"
+            >
+              {theme === "light" ? <Moon className="w-3.5 h-3.5 text-amber-300" /> : <Sun className="w-3.5 h-3.5 text-amber-400" />}
+            </button>
             <button
               type="button"
               onClick={toggleLang}

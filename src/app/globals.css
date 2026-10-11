@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --navy-950: #020617;
   --navy-900: #0B1329;
@@ -28,15 +30,23 @@ html {
   letter-spacing: -0.012em;
 }
 
+/* DEFAULT: Clean, crisp Light Mode (Banking / Kopra Style) */
 body {
-  background-color: #020617;
-  color: #F8FAFC;
+  background-color: #FFFFFF;
+  color: #0F172A;
   overflow-x: hidden;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Compact Kopra Typography adjustments */
+/* Dark Mode Overrides */
+html.dark body {
+  background-color: #020617;
+  color: #F8FAFC;
+}
+
+/* Compact Typography adjustments */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
   font-weight: 800;
@@ -48,11 +58,17 @@ h1, h2, h3, h4, h5, h6 {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html.dark ::-webkit-scrollbar-track {
   background: #0B1329;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #CBD5E1;
   border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #F59E0B;

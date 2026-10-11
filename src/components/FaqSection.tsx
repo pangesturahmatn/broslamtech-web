@@ -43,7 +43,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-slate-900 relative overflow-hidden border-t border-slate-800">
+    <section id="faq" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
@@ -52,10 +52,10 @@ export default function FaqSection() {
             <HelpCircle className="w-3.5 h-3.5" />
             <span>TANYA JAWAB STRATEGIS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Pertanyaan yang Sering Diajukan Pemilik Bengkel
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
             Jawaban lugas untuk hal-hal yang sering dikhawatirkan saat beralih ke sistem digital.
           </p>
         </div>
@@ -67,14 +67,14 @@ export default function FaqSection() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-slate-800 bg-slate-950/80 overflow-hidden transition-colors"
+                className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 overflow-hidden transition-colors shadow-xs"
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
                   className="w-full py-4.5 px-6 flex items-center justify-between gap-4 text-left cursor-pointer hover:bg-slate-900/60 transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-slate-100">
+                  <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100">
                     {faq.q}
                   </span>
                   <ChevronDown
@@ -84,7 +84,7 @@ export default function FaqSection() {
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 animate-in fade-in duration-150">
+                  <div className="px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-800/60 animate-in fade-in duration-150">
                     {faq.a}
                   </div>
                 )}

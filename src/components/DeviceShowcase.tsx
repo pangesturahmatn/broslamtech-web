@@ -49,7 +49,7 @@ export default function DeviceShowcase() {
   const current = tabs.find((t) => t.id === activeTab) || tabs[0];
 
   return (
-    <section id="showcase" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+    <section id="showcase" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -60,10 +60,10 @@ export default function DeviceShowcase() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-black tracking-widest uppercase">
             <span>ANTARMUKA SISTEM ENTERPRISE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Didesain untuk Efisiensi Eksekutif &amp; Kecepatan Staf Lapangan
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             Tampilan dashboard responsif dan nyaman digunakan di berbagai perangkat bengkel: dari layar PC kasir, TV display stall, hingga HP Service Advisor.
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function DeviceShowcase() {
                 className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   isActive
                     ? "bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25 scale-102"
-                    : "bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-850 border border-slate-800"
+                    : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 shadow-xs"
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? "text-slate-950" : "text-amber-400"}`} />
@@ -91,7 +91,7 @@ export default function DeviceShowcase() {
         </div>
 
         {/* Window Device Mockup */}
-        <div className="relative rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl overflow-hidden backdrop-blur-md">
+        <div className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
           {/* Top Browser Bar */}
           <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950/90 border-b border-slate-800">
             <div className="flex items-center gap-2">
@@ -119,11 +119,11 @@ export default function DeviceShowcase() {
           {/* Bottom Bar Info */}
           <div className="p-6 bg-slate-900/95 border-t border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h4 className="text-base font-bold text-white flex items-center gap-2">
+              <h4 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400" />
                 <span>{current.title}</span>
               </h4>
-              <p className="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
                 {current.desc}
               </p>
             </div>

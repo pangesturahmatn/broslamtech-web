@@ -21,13 +21,13 @@ export default function ProfitCalculator() {
   };
 
   return (
-    <section id="kalkulator" className="py-24 bg-slate-900 relative overflow-hidden border-t border-slate-800">
+    <section id="kalkulator" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Background glow */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="rounded-3xl bg-slate-950/80 border border-slate-800/80 p-8 sm:p-12 shadow-2xl backdrop-blur-xl">
+        <div className="rounded-3xl bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-lg backdrop-blur-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Sliders */}
@@ -37,19 +37,19 @@ export default function ProfitCalculator() {
                   <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
                   <span>SIMULASI KEBOCORAN MODAL BENGKEL</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                   Berapa Uang yang Bocor di Bengkel Anda Setiap Bulan?
                 </h2>
-                <p className="text-sm text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
                   Tanpa sistem FIFO dan audit trail yang ketat, kebocoran terjadi dari selisih harga beli modal sparepart, part terpakai tanpa SPK, biaya bubut tidak tertagih, dan diskon liar tanpa persetujuan.
                 </p>
               </div>
 
               {/* Slider 1: Omset */}
-              <div className="space-y-3 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
-                <div className="flex justify-between items-center text-sm font-bold text-slate-200">
+              <div className="space-y-3 bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">
                   <span>Omset Rata-Rata Bulanan per Cabang:</span>
-                  <span className="text-base font-black text-amber-400">{formatRupiah(omsetPerBulan)}</span>
+                  <span className="text-base font-black text-amber-600 dark:text-amber-400">{formatRupiah(omsetPerBulan)}</span>
                 </div>
                 <input
                   type="range"
@@ -68,10 +68,10 @@ export default function ProfitCalculator() {
               </div>
 
               {/* Slider 2: Cabang */}
-              <div className="space-y-3 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
-                <div className="flex justify-between items-center text-sm font-bold text-slate-200">
+              <div className="space-y-3 bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+                <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200">
                   <span>Jumlah Cabang Bengkel Aktif:</span>
-                  <span className="text-base font-black text-amber-400">{cabang} Cabang</span>
+                  <span className="text-base font-black text-amber-600 dark:text-amber-400">{cabang} Cabang</span>
                 </div>
                 <input
                   type="range"
@@ -92,7 +92,7 @@ export default function ProfitCalculator() {
 
             {/* Right Column: Leakage Result Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-amber-500/30 p-8 shadow-2xl relative overflow-hidden space-y-6">
+              <div className="rounded-3xl bg-white dark:bg-slate-950 border-2 border-amber-400/80 p-8 shadow-xl relative overflow-hidden space-y-6">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
 
                 <div className="space-y-1">
@@ -103,33 +103,33 @@ export default function ProfitCalculator() {
                     <span>{formatRupiah(totalLeakPerTahun)}</span>
                     <span className="text-xs font-bold text-slate-400">/ tahun</span>
                   </div>
-                  <div className="text-xs font-semibold text-slate-400">
-                    Setara <strong className="text-white">{formatRupiah(leakPerBulan)}</strong> setiap bulan lenyap tanpa disadari.
+                  <div className="text-xs font-semibold text-slate-600 dark:text-slate-400">
+                    Setara <strong className="text-slate-900 dark:text-white">{formatRupiah(leakPerBulan)}</strong> setiap bulan lenyap tanpa disadari.
                   </div>
                 </div>
 
                 {/* Leak Breakdown */}
                 <div className="space-y-2.5 pt-2 border-t border-slate-800 text-xs">
-                  <div className="flex justify-between items-center text-slate-300">
+                  <div className="flex justify-between items-center text-slate-700 dark:text-slate-300">
                     <span className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-rose-400"></span>
                       <span>Selisih Stok &amp; Modal Part (FIFO):</span>
                     </span>
-                    <span className="font-bold text-slate-100">{formatRupiah(partLeak)}</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-100">{formatRupiah(partLeak)}</span>
                   </div>
-                  <div className="flex justify-between items-center text-slate-300">
+                  <div className="flex justify-between items-center text-slate-700 dark:text-slate-300">
                     <span className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-amber-400"></span>
                       <span>Jasa Luar/Bubut Tidak Tertagih:</span>
                     </span>
-                    <span className="font-bold text-slate-100">{formatRupiah(jasaLeak)}</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-100">{formatRupiah(jasaLeak)}</span>
                   </div>
-                  <div className="flex justify-between items-center text-slate-300">
+                  <div className="flex justify-between items-center text-slate-700 dark:text-slate-300">
                     <span className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-blue-400"></span>
                       <span>Diskon Liar &amp; Selisih Kasir:</span>
                     </span>
-                    <span className="font-bold text-slate-100">{formatRupiah(adminLeak)}</span>
+                    <span className="font-bold text-slate-900 dark:text-slate-100">{formatRupiah(adminLeak)}</span>
                   </div>
                 </div>
 

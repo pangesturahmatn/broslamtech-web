@@ -1,3 +1,4 @@
+import { ThemeProvider } from "../context/ThemeContext";
 import { LanguageProvider } from "../context/LanguageContext";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
@@ -41,9 +42,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 antialiased font-sans">
+        <ThemeProvider>
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

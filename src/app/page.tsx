@@ -25,7 +25,7 @@ export default function HomePage() {
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors selection:bg-amber-500 selection:text-slate-950">
       {/* 1. Header Navigation */}
       <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
 

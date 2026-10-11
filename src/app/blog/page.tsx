@@ -29,7 +29,7 @@ export default function BlogListingPage() {
       : articles.filter((a) => a.catTag === selectedCat);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
       <Navbar />
 
       <main className="pt-28 pb-20 flex-1">

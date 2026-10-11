@@ -11,7 +11,7 @@ import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2, PhoneCall } from "luci
 
 export default function TentangKamiPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors selection:bg-amber-500 selection:text-slate-950">
       <Navbar />
 
       <main className="pt-28">
