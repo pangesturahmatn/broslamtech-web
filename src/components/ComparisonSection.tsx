@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, XCircle, AlertCircle, Sparkles } from "lucide-react";
+import { CheckCircle2, XCircle, AlertCircle } from "lucide-react";
 
 interface ComparisonRow {
   feature: string;
@@ -116,10 +116,7 @@ export default function ComparisonSection() {
                 <th className="py-4 px-4 font-semibold text-slate-600 dark:text-slate-400 text-center w-1/5">Software Kasir Ritel (POS)</th>
                 <th className="py-4 px-4 font-semibold text-slate-600 dark:text-slate-400 text-center w-1/5">Excel Manual</th>
                 <th className="py-4 px-4 font-extrabold text-slate-950 dark:text-amber-300 text-center w-1/5 bg-amber-500/10 dark:bg-amber-500/15 border-l-2 border-amber-500 dark:border-amber-400">
-                  <span className="flex items-center justify-center gap-1.5">
-                    <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400" />
-                    <span>BroSlam.Tech ERP</span>
-                  </span>
+                  <span>BroSlam.Tech ERP</span>
                 </th>
               </tr>
             </thead>

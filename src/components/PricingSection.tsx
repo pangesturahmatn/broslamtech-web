@@ -2,7 +2,7 @@
 
 import React from "react";
 import { pricingTiers } from "../data/pricing-data";
-import { Check, Star, ArrowRight, Sparkles, Zap, Layers, HelpCircle } from "lucide-react";
+import { Check, ArrowRight, Layers, HelpCircle } from "lucide-react";
 
 interface PricingSectionProps {
   onOpenCatalog?: () => void;
@@ -40,9 +40,8 @@ export default function PricingSection({ onOpenCatalog }: PricingSectionProps) {
             >
               {/* Popular ribbon (Cleanly floating with zero overlap) */}
               {tier.isPopular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md border border-amber-300">
-                  <Star className="w-3 h-3 fill-slate-950 text-slate-950" />
-                  <span>PALING LARIS &amp; REKOMENDASI</span>
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-0.5 rounded-full bg-amber-500 text-slate-950 text-[11px] font-black uppercase tracking-wider shadow-md border border-amber-300">
+                  <span>Paling Diminati</span>
                 </div>
               )}
 

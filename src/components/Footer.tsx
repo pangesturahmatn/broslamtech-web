@@ -55,27 +55,23 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/#solusi" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
-                  <span>10 Pilar Ekosistem 360°</span>
+                <Link href="/#solusi" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-600 dark:text-slate-300 block">
+                  10 Pilar Ekosistem 360°
                 </Link>
               </li>
               <li>
-                <Link href="/#harga" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-amber-700 dark:text-amber-300 font-bold flex items-center gap-2">
-                  <CreditCard className="w-3.5 h-3.5 text-amber-600 dark:text-amber-300" />
-                  <span>Harga Sewa Mulai Rp 399rb</span>
+                <Link href="/#harga" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-900 dark:text-white font-semibold block">
+                  Harga Sewa Mulai Rp 399rb
                 </Link>
               </li>
               <li>
-                <Link href="/#portofolio" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Building2 className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
-                  <span>Portofolio Bengkel Terkemuka</span>
+                <Link href="/#portofolio" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-600 dark:text-slate-300 block">
+                  Portofolio Bengkel Terkemuka
                 </Link>
               </li>
               <li>
-                <Link href="/tentang-kami" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Users2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span>Dewan Eksekutif (5 Pemimpin)</span>
+                <Link href="/tentang-kami" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-600 dark:text-slate-300 block">
+                  Dewan Eksekutif &amp; Kepemimpinan
                 </Link>
               </li>
             </ul>
@@ -92,23 +88,20 @@ export default function Footer() {
                   href="https://app.broslamtech.com/login"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-amber-700 dark:text-amber-300 font-bold"
+                  className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-900 dark:text-white font-semibold inline-flex items-center gap-1.5"
                 >
-                  <KeyRound className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                   <span>Login Single Sign-On (SSO)</span>
                   <ExternalLink className="w-3 h-3 text-slate-400 dark:text-slate-500" />
                 </a>
               </li>
               <li>
-                <Link href="/#kalkulator" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Calculator className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
-                  <span>Kalkulator Kebocoran Uang</span>
+                <Link href="/#kalkulator" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-600 dark:text-slate-300 block">
+                  Kalkulator Kebocoran Uang
                 </Link>
               </li>
               <li>
-                <Link href="/#portal-berita" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Newspaper className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
-                  <span>Portal Berita &amp; Promo</span>
+                <Link href="/#portal-berita" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors text-slate-600 dark:text-slate-300 block">
+                  Portal Berita &amp; Wawasan
                 </Link>
               </li>
             </ul>
