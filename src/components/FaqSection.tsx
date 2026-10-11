@@ -11,7 +11,7 @@ interface FaqItem {
 const faqs: FaqItem[] = [
   {
     q: "Apakah staf kasir dan mekanik saya yang gaptek bisa menggunakannya?",
-    a: "Sangat bisa! Antarmuka sistem dirancang dengan filosofi 'Se-mudah scroll media sosial'. Tombol besar, alur jelas (Booking ➔ SPK ➔ Pengerjaan ➔ Kasir), dan dilengkapi tombol auto-complete sehingga staf tidak perlu mengetik panjang lebar.",
+    a: "Sangat bisa! Antarmuka sistem dirancang dengan filosofi 'Se-mudah scroll media sosial'. Tombol besar, alur jelas (Booking &rarr; SPK &rarr; Pengerjaan &rarr; Kasir), dan dilengkapi tombol auto-complete sehingga staf tidak perlu mengetik panjang lebar.",
   },
   {
     q: "Bagaimana jika koneksi internet di bengkel mendadak lambat?",
@@ -43,7 +43,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <section id="faq" className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090F1E] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
@@ -67,7 +67,7 @@ export default function FaqSection() {
             return (
               <div
                 key={idx}
-                className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 overflow-hidden transition-colors shadow-xs"
+                className="rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.04] hover:dark:bg-white/[0.07] overflow-hidden transition-all duration-300 shadow-sm dark:shadow-md"
               >
                 <button
                   type="button"

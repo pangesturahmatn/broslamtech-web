@@ -248,7 +248,7 @@ export const pillarsData: PillarItem[] = [
       },
       {
         "title": "Inventaris GA & Pengadaan Alat Kantor",
-        "desc": "Formulir pengajuan alat kerja non-sparepart dengan alur persetujuan bertingkat (HCGA ➔ GM ➔ Direktur).",
+        "desc": "Formulir pengajuan alat kerja non-sparepart dengan alur persetujuan bertingkat (HCGA -> GM -> Direktur).",
         "modalCategory": "B. Inventaris & Logistik Gudang",
         "modalTitle": "Pengajuan GA & Inventaris Kantor (/purchasing/equipment)",
         "modalFunction": "Sistem pengajuan barang operasional bengkel (ATK, seragam, dongkrak, lampu stall) dengan otorisasi berjenjang dan cetak surat pengajuan resmi format A4/F4.",

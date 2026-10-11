@@ -48,7 +48,7 @@ export default function AppWarrantySection() {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+    <section className="py-24 bg-gradient-to-b from-[#070B14] via-[#0B1224] to-[#070B14] relative overflow-hidden border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
@@ -71,7 +71,7 @@ export default function AppWarrantySection() {
             return (
               <div
                 key={idx}
-                className="rounded-3xl bg-slate-900/70 border border-slate-800 p-5 flex flex-col justify-between hover:border-slate-700 transition-all shadow-lg"
+                className="rounded-3xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-amber-400/30 p-5 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 shadow-xl backdrop-blur-md"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
@@ -95,7 +95,7 @@ export default function AppWarrantySection() {
 
                 <div className="pt-3 border-t border-slate-800/80 mt-4 flex items-center justify-between text-[10px] text-slate-500 font-mono">
                   <span>Tahap 0{idx + 1}</span>
-                  <span>✓ Standard</span>
+                  <span className="flex items-center gap-1 text-emerald-400 font-bold"><CheckCircle2 className="w-3 h-3 text-emerald-400" /> Standard</span>
                 </div>
               </div>
             );

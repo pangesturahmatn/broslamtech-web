@@ -18,6 +18,7 @@ import {
   Eye,
   EyeOff,
   RefreshCw,
+  Zap,
   Sparkles
 } from "lucide-react";
 
@@ -361,7 +362,7 @@ export default function AdminDashboardPage() {
           
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 font-bold">
-              ⚡
+              <Zap className="w-5 h-5 text-amber-400" />
             </div>
             <div>
               <div className="flex items-center gap-2">

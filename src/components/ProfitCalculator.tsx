@@ -149,7 +149,7 @@ export default function ProfitCalculator() {
                   rel="noopener noreferrer"
                   className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-xl shadow-amber-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
                 >
-                  <span>💬 Konsultasikan Solusi Kebocoran Ini</span>
+                  <span>Konsultasikan Solusi Kebocoran Ini</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
 

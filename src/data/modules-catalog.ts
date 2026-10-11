@@ -824,7 +824,7 @@ export const allModulesData: ModuleItem[] = [
     "category": "G. CRM, WA Gateway & Loyalty",
     "name": "117. Riwayat & Log Audit Reminder After Service — `/crm/reminder`",
     "func": "Jejak audit komprehensif seluruh pesan pengingat servis yang pernah dikirimkan ke pelanggan pasca kunjungan bengkel.",
-    "feature": "Tab mode [ 📜 Riwayat / Log Reminder ], kartu KPI (Total Reminder, Terkirim, Batal, Respon Positif), filter status dan rentang tanggal, modal pratinjau teks pesan WA, serta tombol direct wa.me anti-teks terpotong.",
+    "feature": "Tab mode [ Riwayat / Log Reminder ], kartu KPI (Total Reminder, Terkirim, Batal, Respon Positif), filter status dan rentang tanggal, modal pratinjau teks pesan WA, serta tombol direct wa.me anti-teks terpotong.",
     "benefit": "Memastikan tim CS disiplin menjalankan SOP perawatan hubungan pelanggan H+3, H+30, dan H+90 hari setelah mobil diservis."
   },
   {
@@ -859,7 +859,7 @@ export const allModulesData: ModuleItem[] = [
     "category": "G. CRM, WA Gateway & Loyalty",
     "name": "122. Pelacakan KPI Digital Marketing CAC, AOV & Status ROAS — `/crm/ads`",
     "func": "Analisis laba rugi kampanye iklan digital berbayar berdasarkan konversi omset riil SPK bengkel.",
-    "feature": "Kartu KPI dominan CAC (Customer Acquisition Cost) dan AOV (Average Order Value), badge otomatis status kesehatan ROAS (🔴 Boncos <1x, 🟡 Impas 1-2x, 🟢 Profit Sehat >=2x), dan atribusi omset SPK riil.",
+    "feature": "Kartu KPI dominan CAC (Customer Acquisition Cost) dan AOV (Average Order Value), badge otomatis status kesehatan ROAS (Merah: Boncos <1x, Kuning: Impas 1-2x, Hijau: Profit Sehat >=2x), dan atribusi omset SPK riil.",
     "benefit": "Membantu Owner dan digital marketer memutuskan secara objektif kampanye mana yang harus dinaikkan anggarannya atau dihentikan."
   },
   {

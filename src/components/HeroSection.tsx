@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowDown, ShieldCheck, Lock, ArrowRight, MessageSquare } from "lucide-react";
+import { ArrowDown, ShieldCheck, Lock, ArrowRight, MessageSquare, Sparkles } from "lucide-react";
 
 interface HeroSectionProps {
   onOpenConsultation?: () => void;
@@ -44,7 +44,7 @@ export default function HeroSection({ onOpenConsultation, onOpenCatalog }: HeroS
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold tracking-wider uppercase backdrop-blur-sm">
-              <span>✦ SATU SENTUHAN JARI, SELESAI DALAM HITUNGAN DETIK</span>
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" /><span>SATU SENTUHAN JARI, SELESAI DALAM HITUNGAN DETIK</span>
             </div>
 
             {/* Main Headline */}
