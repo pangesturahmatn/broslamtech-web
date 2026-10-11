@@ -75,11 +75,11 @@ export default function Footer() {
                 <CreditCard className="w-3 h-3 text-blue-400" />
                 <span>Rekening Resmi Langganan:</span>
               </span>
-              <div className="text-xs font-bold text-white font-mono">
-                BLU BCA : 001665391501
+              <div className="text-xs font-bold text-white">
+                Metode Pembayaran: Bank BCA
               </div>
               <div className="text-[11px] text-slate-400">
-                a.n. UTOMO NUGROHO
+                Invoice &amp; nomor rekening transfer resmi diterbitkan via WhatsApp CS
               </div>
             </div>
 

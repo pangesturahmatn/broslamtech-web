@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Newspaper, ArrowRight, Calendar, User, X, Tag, PlusCircle } from "lucide-react";
+import { Newspaper, ArrowRight, Calendar, User, Tag, PlusCircle } from "lucide-react";
 import initialArticles from "../data/news-articles.json";
 
 export default function NewsPortal() {
   const [articles, setArticles] = useState<any[]>(initialArticles);
   const [selectedCat, setSelectedCat] = useState<string>("all");
-  const [activeArticle, setActiveArticle] = useState<any | null>(null);
 
   useEffect(() => {
     fetch("/api/news")
@@ -99,14 +98,15 @@ export default function NewsPortal() {
           </button>
         </div>
 
-        {/* News Grid */}
+        {/* News Grid (Links directly to /blog/[id]) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
           {filtered.map((art) => (
-            <article
+            <Link
               key={art.id}
+              href={`/blog/${art.id}`}
               className={`rounded-3xl p-5 flex flex-col justify-between transition-all group ${
                 art.isPromo
-                  ? "bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-amber-500/40 shadow-xl"
+                  ? "bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-amber-500/40 shadow-xl hover:border-amber-400"
                   : "bg-slate-900/80 border border-slate-800 hover:border-slate-700 shadow-lg"
               }`}
             >
@@ -134,16 +134,12 @@ export default function NewsPortal() {
                 <span className="text-slate-400">
                   {art.date}
                 </span>
-                <button
-                  type="button"
-                  onClick={() => setActiveArticle(art)}
-                  className="font-black text-amber-400 hover:text-amber-300 flex items-center gap-1 transition-colors cursor-pointer"
-                >
-                  <span>Baca</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
+                <span className="font-black text-amber-400 group-hover:text-amber-300 flex items-center gap-1 transition-colors">
+                  <span>Baca Artikel</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
@@ -154,7 +150,7 @@ export default function NewsPortal() {
               Kelola Berita &amp; Promo Secara Dinamis
             </h4>
             <p className="text-xs text-slate-400">
-              Admin dapat menambah, mengubah informasi promo, atau mengunggah materi artikel baru secara langsung.
+              Admin dapat menambah materi promo baru atau wawasan industri langsung ke portal resmi.
             </p>
           </div>
           <div className="flex gap-3">
@@ -169,50 +165,6 @@ export default function NewsPortal() {
         </div>
 
       </div>
-
-      {/* Article Detail Modal */}
-      {activeArticle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 text-slate-100 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-start justify-between">
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
-                  {activeArticle.category}
-                </span>
-                <h3 className="text-lg sm:text-xl font-black text-white mt-2 leading-tight">
-                  {activeArticle.title}
-                </h3>
-                <div className="flex items-center gap-3 text-xs text-slate-400 mt-2">
-                  <span>📅 {activeArticle.date}</span>
-                  <span>•</span>
-                  <span>✍️ {activeArticle.author}</span>
-                </div>
-              </div>
-              <button
-                onClick={() => setActiveArticle(null)}
-                className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div
-              className="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3 pt-3 border-t border-slate-800"
-              dangerouslySetInnerHTML={{ __html: activeArticle.content }}
-            />
-
-            <div className="pt-4 flex justify-end">
-              <button
-                onClick={() => setActiveArticle(null)}
-                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300 cursor-pointer"
-              >
-                Tutup
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
     </section>
   );
 }

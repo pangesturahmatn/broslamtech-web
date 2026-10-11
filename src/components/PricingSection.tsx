@@ -117,7 +117,7 @@ export default function PricingSection() {
 
           <div className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-[11px] text-slate-300">
             <CreditCard className="w-3.5 h-3.5 text-blue-400" />
-            <span>Rekening Resmi: <strong>BLU BCA 001665391501</strong> (a.n. Utomo Nugroho)</span>
+            <span>Metode Pembayaran Resmi: <strong>Transfer Bank BCA</strong> (Invoice diterbitkan setelah registrasi)</span>
           </div>
         </div>
 
