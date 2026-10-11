@@ -49,7 +49,7 @@ export default function HomePage() {
         <ProfitCalculator />
 
         {/* 6. Pricing Section (Starter Rp 399k, Pro Growth Rp 799k, Enterprise Rp 1.499k) */}
-        <PricingSection />
+        <PricingSection onOpenCatalog={() => setIsCatalogOpen(true)} />
 
         {/* 7. Comparison Section (vs POS Ritel vs Excel) */}
         <ComparisonSection />
