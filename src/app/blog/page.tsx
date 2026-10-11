@@ -138,7 +138,7 @@ export default function BlogListingPage() {
             {filtered.map((art) => (
               <Link
                 key={art.id}
-                href={`/blog/${art.id}`}
+                href={`/blog/${art.slug || art.id}`}
                 className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 group cursor-pointer backdrop-blur-xl hover:-translate-y-2 ${
                   art.isPromo
                     ? "bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-amber-500/40 shadow-xl hover:border-amber-400 hover:shadow-[0_20px_45px_rgba(245,158,11,0.2)]"

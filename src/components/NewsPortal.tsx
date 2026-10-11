@@ -137,7 +137,7 @@ export default function NewsPortal() {
           {filtered.map((art) => (
             <Link
               key={art.id}
-              href={`/blog/${art.id}`}
+              href={`/blog/${art.slug || art.id}`}
               className={`rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group cursor-pointer relative overflow-hidden backdrop-blur-xl hover:-translate-y-1.5 ${
                 art.isPromo
                   ? "bg-amber-50/70 dark:bg-gradient-to-b dark:from-slate-900/90 dark:via-slate-900/60 dark:to-slate-950/90 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow-md"

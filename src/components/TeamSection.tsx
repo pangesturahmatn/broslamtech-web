@@ -32,11 +32,11 @@ export default function TeamSection() {
   const currentLeader = team[activeIndex] || team[0];
 
   // 5 slots matching Mandiri Kopra: [-2, -1, 0, 1, 2]
-  // -2: Outer Left (lowest flank)
+  // -2: Outer Left (lowest flank, wide spread)
   // -1: Inner Left (mid flank)
   //  0: Center Apex (highest, largest)
   // +1: Inner Right (mid flank)
-  // +2: Outer Right (lowest flank)
+  // +2: Outer Right (lowest flank, wide spread)
   const slots = [-2, -1, 0, 1, 2].map((offset) => {
     const memberIndex = (activeIndex + offset + team.length) % team.length;
     return {
@@ -54,11 +54,11 @@ export default function TeamSection() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle radial spotlight in dark mode */}
-      <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-slate-800/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="hidden dark:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-slate-800/20 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* 1. Iconic Double Quotation Mark (Pristine White / Elegant in Kopra style) */}
+        {/* 1. Iconic Double Quotation Mark (Pristine & Elegant) */}
         <div className="flex justify-center mb-3">
           <span className="text-4xl sm:text-5xl font-serif text-slate-800 dark:text-white leading-none select-none tracking-tighter">
             &ldquo;
@@ -83,8 +83,8 @@ export default function TeamSection() {
         </div>
 
         {/* 4. Kopra Mandiri Signature Semicircular Dome Arch (⌒) */}
-        {/* Responsive curved stage: Center apex on top, inner flanks mid-tier, outer flanks bottom, arrows in center base */}
-        <div className="relative w-full max-w-2xl sm:max-w-3xl mx-auto h-[230px] sm:h-[280px] md:h-[310px] mt-6 select-none">
+        {/* Generously widened stage (max-w-4xl / lg:max-w-5xl) for magnificent horizontal breathing room */}
+        <div className="relative w-full max-w-3xl sm:max-w-4xl lg:max-w-5xl mx-auto h-[240px] sm:h-[300px] md:h-[340px] mt-8 select-none">
           {slots.map(({ offset, memberIndex, member }) => {
             const isCenter = offset === 0;
             const isInnerLeft = offset === -1;
@@ -92,31 +92,31 @@ export default function TeamSection() {
             const isOuterLeft = offset === -2;
             const isOuterRight = offset === 2;
 
-            // Geometry positioning for the Kopra Dome
+            // Geometry positioning for the Kopra Dome with wide, balanced spread
             let positionClasses = "";
             let sizeClasses = "";
             let visualClasses = "";
 
             if (isCenter) {
               positionClasses = "left-1/2 -translate-x-1/2 top-0 z-30";
-              sizeClasses = "w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40";
-              visualClasses = "opacity-100 scale-100 ring-1 ring-slate-300/60 dark:ring-white/20 shadow-xl dark:shadow-[0_12px_36px_rgba(0,0,0,0.8)]";
+              sizeClasses = "w-28 h-28 sm:w-36 sm:h-36 md:w-42 md:h-42";
+              visualClasses = "opacity-100 scale-100 ring-1 ring-slate-300/80 dark:ring-white/20 shadow-2xl shadow-slate-900/20 dark:shadow-[0_25px_60px_rgba(0,0,0,0.85)]";
             } else if (isInnerLeft) {
-              positionClasses = "left-[14%] sm:left-[20%] md:left-[22%] top-10 sm:top-14 md:top-16 z-20";
+              positionClasses = "left-[16%] sm:left-[22%] md:left-[24%] top-10 sm:top-14 md:top-16 z-20";
               sizeClasses = "w-22 h-22 sm:w-28 sm:h-28 md:w-32 md:h-32";
-              visualClasses = "opacity-75 hover:opacity-100 scale-95 ring-1 ring-slate-300/40 dark:ring-white/10 hover:ring-white/40";
+              visualClasses = "opacity-80 hover:opacity-100 scale-95 ring-1 ring-slate-300/60 dark:ring-white/10 hover:ring-white/40 shadow-xl shadow-slate-900/15 dark:shadow-[0_18px_45px_rgba(0,0,0,0.7)]";
             } else if (isInnerRight) {
-              positionClasses = "right-[14%] sm:right-[20%] md:right-[22%] top-10 sm:top-14 md:top-16 z-20";
+              positionClasses = "right-[16%] sm:right-[22%] md:right-[24%] top-10 sm:top-14 md:top-16 z-20";
               sizeClasses = "w-22 h-22 sm:w-28 sm:h-28 md:w-32 md:h-32";
-              visualClasses = "opacity-75 hover:opacity-100 scale-95 ring-1 ring-slate-300/40 dark:ring-white/10 hover:ring-white/40";
+              visualClasses = "opacity-80 hover:opacity-100 scale-95 ring-1 ring-slate-300/60 dark:ring-white/10 hover:ring-white/40 shadow-xl shadow-slate-900/15 dark:shadow-[0_18px_45px_rgba(0,0,0,0.7)]";
             } else if (isOuterLeft) {
-              positionClasses = "left-0 sm:left-4 md:left-6 bottom-2 sm:bottom-4 md:bottom-6 z-10";
+              positionClasses = "left-0 sm:left-2 md:left-4 bottom-2 sm:bottom-4 md:bottom-6 z-10";
               sizeClasses = "w-18 h-18 sm:w-24 sm:h-24 md:w-26 md:h-26";
-              visualClasses = "opacity-45 hover:opacity-85 scale-90 ring-1 ring-slate-300/20 dark:ring-white/5 hover:ring-white/30";
+              visualClasses = "opacity-50 hover:opacity-90 scale-90 ring-1 ring-slate-300/40 dark:ring-white/5 hover:ring-white/30 shadow-lg shadow-slate-900/10 dark:shadow-[0_12px_30px_rgba(0,0,0,0.55)]";
             } else if (isOuterRight) {
-              positionClasses = "right-0 sm:right-4 md:right-6 bottom-2 sm:bottom-4 md:bottom-6 z-10";
+              positionClasses = "right-0 sm:right-2 md:right-4 bottom-2 sm:bottom-4 md:bottom-6 z-10";
               sizeClasses = "w-18 h-18 sm:w-24 sm:h-24 md:w-26 md:h-26";
-              visualClasses = "opacity-45 hover:opacity-85 scale-90 ring-1 ring-slate-300/20 dark:ring-white/5 hover:ring-white/30";
+              visualClasses = "opacity-50 hover:opacity-90 scale-90 ring-1 ring-slate-300/40 dark:ring-white/5 hover:ring-white/30 shadow-lg shadow-slate-900/10 dark:shadow-[0_12px_30px_rgba(0,0,0,0.55)]";
             }
 
             return (
@@ -127,7 +127,7 @@ export default function TeamSection() {
                 className={`absolute rounded-full transition-all duration-500 ease-out cursor-pointer group focus:outline-none ${positionClasses}`}
                 title={`${member.name} (${member.role})`}
               >
-                {/* Clean Circular Portrait (Zero badges, pure Kopra style) */}
+                {/* Circular Portrait with soft ambient shadow & subtle bottom vignette */}
                 <div
                   className={`relative rounded-full overflow-hidden bg-slate-200 dark:bg-slate-900 transition-all duration-300 ${sizeClasses} ${visualClasses}`}
                 >
@@ -135,20 +135,18 @@ export default function TeamSection() {
                     src={member.avatar}
                     alt={member.name}
                     fill
-                    sizes="(max-width: 640px) 100px, 160px"
+                    sizes="(max-width: 640px) 100px, 180px"
                     className="object-cover object-top filter brightness-100 group-hover:brightness-105 transition-all duration-300"
                     priority={isCenter}
                   />
-                  {/* Subtle dark vignette overlay for outer/inner avatars */}
-                  {!isCenter && (
-                    <div className="absolute inset-0 bg-black/20 dark:bg-black/35 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
-                  )}
+                  {/* Soft bottom vignette so the shoulders blend gracefully like Kopra */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 via-black/15 to-transparent pointer-events-none" />
                 </div>
               </button>
             );
           })}
 
-          {/* 5. Navigation Buttons (< and >) SITTING EXACTLY AT THE BOTTOM CENTER (Kopra Mandiri Signature) */}
+          {/* 5. Navigation Buttons (< and >) at the exact Bottom Center */}
           <div className="absolute left-1/2 -translate-x-1/2 bottom-1 sm:bottom-3 md:bottom-5 flex items-center justify-center gap-3 z-30">
             <button
               type="button"

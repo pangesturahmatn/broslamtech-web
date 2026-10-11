@@ -1,6 +1,7 @@
 [
   {
     "id": "art-1",
+    "slug": "peluncuran-164-modul-erp-bengkel-360-otomasi-sak-etap",
     "category": "Update Sistem",
     "catTag": "sistem",
     "isPromo": false,
@@ -8,10 +9,11 @@
     "date": "10 Oktober 2026",
     "author": "Tim R&D BroSlam.Tech",
     "imageUrl": "/assets/erp-desktop-dashboard.jpg",
-    "content": "<p><strong>Purwokerto / Jakarta</strong> — BroSlam.Tech resmi mengumumkan perilisan pembaruan besar sistem ERP Bengkel versi 2.5 yang memuat total 164 modul operasional dan 380 endpoint API aktif.</p><br><p>Pembaruan ini mencakup 7 klaster solusi terintegrasi: dari alokasi mekanik di stall, gudang part FIFO, WhatsApp Gateway mandiri, hingga konsolidasi holding multi-cabang.</p>"
+    "content": "<p><strong>Purwokerto / Jakarta</strong> — BroSlam.Tech resmi mengumumkan perilisan pembaruan besar sistem ERP Bengkel versi 2.5 yang memuat total 164 modul operasional dan 380 endpoint API aktif.</p><br><p>Pembaruan ini mencakup 7 klaster solusi terintegrasi: dari alokasi mekanik di stall, gudang part FIFO murni, WhatsApp Gateway mandiri, hingga konsolidasi holding multi-cabang.</p>"
   },
   {
     "id": "art-2",
+    "slug": "program-akselerasi-bengkel-digital-diskon-onboarding-migrasi-excel",
     "category": "Promo Spesial",
     "catTag": "promo",
     "isPromo": true,
@@ -24,6 +26,7 @@
   },
   {
     "id": "art-3",
+    "slug": "mengatasi-bocor-halus-20-juta-selisih-part-subkon",
     "category": "Manajemen & Finansial",
     "catTag": "bisnis",
     "isPromo": false,
@@ -31,10 +34,11 @@
     "date": "08 Oktober 2026",
     "author": "Konsultan Finansial Bengkel",
     "imageUrl": "/assets/erp-tv-stall.jpg",
-    "content": "<p>Sebagian besar pemilik bengkel mobil dengan omset Rp 100 juta – Rp 500 juta per bulan mengalami fenomena 'bengkel ramai tapi kas tidak bertambah'.</p><br><p>Melalui perlindungan rumus modal materialCost murni dan penguncian voucher diskon, BroSlam.Tech memastikan marjin keuntungan bersih Anda tidak tergerus selisih stok.</p>"
+    "content": "<p>Sebagian besar pemilik bengkel mobil dengan omset Rp 100 juta — Rp 500 juta per bulan mengalami fenomena 'bengkel ramai tapi kas tidak bertambah'.</p><br><p>Melalui perlindungan rumus modal materialCost murni dan penguncian voucher diskon, BroSlam.Tech memastikan marjin keuntungan bersih Anda tidak tergerus selisih stok.</p>"
   },
   {
     "id": "art-4",
+    "slug": "strategi-reminder-servis-berkala-whatsapp-otomatis",
     "category": "Marketing & Retensi",
     "catTag": "marketing",
     "isPromo": false,
