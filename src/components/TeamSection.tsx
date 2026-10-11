@@ -3,119 +3,122 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { executiveTeam } from "../data/team-data";
-import { Users, ChevronLeft, ChevronRight, ShieldCheck, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export default function TeamSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-rotate every 3.5 seconds
+  // Auto-rotate every 4 seconds (pauses when user hovers or interacts)
   useEffect(() => {
     if (isPaused) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % executiveTeam.length);
-    }, 3500);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % executiveTeam.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, [isPaused]);
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + executiveTeam.length) % executiveTeam.length);
+    setActiveIndex((prev) => (prev - 1 + executiveTeam.length) % executiveTeam.length);
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % executiveTeam.length);
+    setActiveIndex((prev) => (prev + 1) % executiveTeam.length);
   };
 
+  const currentLeader = executiveTeam[activeIndex];
+
   return (
-    <section id="tim" className="py-24 bg-white relative overflow-hidden border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section
+      id="tim"
+      className="py-24 bg-[#0A0E1A] text-white relative overflow-hidden transition-colors"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Subtle radial spotlight glow behind the active center leader */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[650px] h-[450px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold tracking-widest uppercase">
-            <Users className="w-3.5 h-3.5" />
-            <span>DEWAN EKSEKUTIF &amp; TIM PENGEMBANG</span>
+        {/* 1. Large Iconic Quotation Mark */}
+        <div className="flex justify-center mb-6">
+          <div className="text-5xl sm:text-6xl text-white/90 font-serif leading-none select-none">
+            &ldquo;
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Kepemimpinan Berpengalaman di Balik BroSlam.Tech
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Kombinasi solid antara praktisi puluhan tahun operasional bengkel mobil nyata, arsitektur software enterprise Next.js, dan akuntan profesional SAK ETAP.
+        </div>
+
+        {/* 2. Testimonial / Narrative Quote */}
+        <div className="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
+          <p className="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed font-normal transition-opacity duration-300">
+            {currentLeader.quote}
           </p>
         </div>
 
-        {/* Interactive Auto-Rotating Carousel (Kopra Mandiri Testimonial Style) */}
-        <div
-          className="relative max-w-4xl mx-auto"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Main Card */}
-          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-xl transition-all duration-500">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              
-              {/* Avatar & Role Badge */}
-              <div className="md:col-span-4 flex flex-col items-center text-center space-y-3">
-                <div className="relative w-28 h-28 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-3 shadow-md">
-                  <Image
-                    src={executiveTeam[currentIndex].avatar}
-                    alt={executiveTeam[currentIndex].name}
-                    width={90}
-                    height={90}
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <span className="px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-700 font-mono text-xs font-black tracking-widest">
-                    {executiveTeam[currentIndex].role}
-                  </span>
-                  <div className="text-[11px] font-bold text-slate-500 mt-1.5">
-                    BroSlam.Tech Core Leader
+        {/* 3. Leader Name & Title (Bold & Crisp) */}
+        <div className="mt-7 space-y-1">
+          <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+            {currentLeader.name}
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-400 font-medium">
+            {currentLeader.companySubtitle}
+          </p>
+        </div>
+
+        {/* 4. Semicircular Arc of Circular Avatars (Kopra by Mandiri Identical Layout) */}
+        <div className="relative mt-14 mb-8 flex items-center justify-center">
+          <div className="flex items-end justify-center gap-4 sm:gap-8 md:gap-12">
+            {executiveTeam.map((member, idx) => {
+              const isActive = idx === activeIndex;
+              return (
+                <button
+                  key={member.id}
+                  type="button"
+                  onClick={() => setActiveIndex(idx)}
+                  className={`relative rounded-full transition-all duration-500 ease-out cursor-pointer group flex flex-col items-center ${
+                    isActive
+                      ? "scale-115 sm:scale-125 z-20 translate-y-0"
+                      : "scale-85 sm:scale-95 opacity-50 hover:opacity-85 z-10 translate-y-4 sm:translate-y-6"
+                  }`}
+                >
+                  {/* Circular Avatar Container with Ring */}
+                  <div
+                    className={`relative rounded-full overflow-hidden transition-all duration-300 ${
+                      isActive
+                        ? "w-24 h-24 sm:w-32 sm:h-32 ring-4 ring-white/90 shadow-[0_10px_35px_rgba(0,0,0,0.6)]"
+                        : "w-20 h-20 sm:w-24 sm:h-24 ring-2 ring-white/20 hover:ring-white/50"
+                    }`}
+                  >
+                    <Image
+                      src={member.avatar}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                    />
                   </div>
-                </div>
-              </div>
 
-              {/* Bio & Details */}
-              <div className="md:col-span-8 space-y-4 text-left">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
-                    {executiveTeam[currentIndex].name}
-                  </h3>
-                  <p className="text-xs font-bold text-blue-700 uppercase tracking-wider mt-0.5">
-                    {executiveTeam[currentIndex].title}
-                  </p>
-                </div>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic border-l-2 border-amber-500 pl-4">
-                  &ldquo;{executiveTeam[currentIndex].bio}&rdquo;
-                </p>
-
-                <div className="space-y-1.5 pt-2">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
-                    Fokus Tanggung Jawab:
+                  {/* Role Tag Below Avatar */}
+                  <span
+                    className={`text-[10px] font-black uppercase tracking-wider mt-3 px-2 py-0.5 rounded-full transition-all ${
+                      isActive
+                        ? "bg-amber-400 text-black shadow-md font-bold"
+                        : "text-slate-400 bg-white/5 group-hover:text-white"
+                    }`}
+                  >
+                    {member.role}
                   </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {executiveTeam[currentIndex].focus.map((f, i) => (
-                      <span
-                        key={i}
-                        className="px-2.5 py-1 rounded-lg bg-white text-slate-700 text-xs font-semibold border border-slate-200 shadow-xs"
-                      >
-                        ✓ {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-            </div>
+                </button>
+              );
+            })}
           </div>
+        </div>
 
-          {/* Carousel Controls (Previous / Next Buttons) */}
+        {/* 5. Navigation Arrows Directly Below Center Avatar (Exact Kopra Mandiri Style) */}
+        <div className="flex items-center justify-center gap-3 mt-4">
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-black hover:bg-slate-100 shadow-lg flex items-center justify-center transition-all cursor-pointer"
-            aria-label="Previous Team Member"
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
+            aria-label="Previous Leader"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -123,30 +126,11 @@ export default function TeamSection() {
           <button
             type="button"
             onClick={handleNext}
-            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-black hover:bg-slate-100 shadow-lg flex items-center justify-center transition-all cursor-pointer"
-            aria-label="Next Team Member"
+            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
+            aria-label="Next Leader"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
-
-          {/* Indicator Dots / Tabs */}
-          <div className="flex items-center justify-center gap-2.5 mt-8">
-            {executiveTeam.map((member, idx) => (
-              <button
-                key={member.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`transition-all cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold ${
-                  currentIndex === idx
-                    ? "bg-[#0F172A] text-white shadow-md scale-105"
-                    : "bg-slate-200 text-slate-600 hover:bg-slate-300"
-                }`}
-              >
-                <span>{member.role}</span>
-                {currentIndex === idx && <span className="text-[10px] text-amber-400">●</span>}
-              </button>
-            ))}
-          </div>
-
         </div>
 
       </div>

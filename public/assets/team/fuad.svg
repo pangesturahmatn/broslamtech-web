@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bgFuad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="suitFuad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0B0F17"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bgFuad)" rx="100"/>
+  <!-- Torso & Suit -->
+  <path d="M40 200 C40 145 65 135 100 135 C135 135 160 145 160 200 Z" fill="url(#suitFuad)"/>
+  <!-- White Collar & Tie -->
+  <polygon points="100,135 85,160 115,160" fill="#FFFFFF"/>
+  <polygon points="100,150 95,195 105,195" fill="#D97706"/>
+  <!-- Neck -->
+  <rect x="88" y="112" width="24" height="26" fill="#D19A66" rx="4"/>
+  <!-- Head & Hair -->
+  <ellipse cx="100" cy="85" rx="36" ry="42" fill="#D19A66"/>
+  <path d="M64 80 C64 50 80 40 100 40 C120 40 136 50 136 80 C136 60 120 48 100 48 C80 48 64 60 64 80 Z" fill="#1C1917"/>
+  <path d="M64 80 C60 65 72 45 100 44 C128 45 140 65 136 80 Q130 54 100 54 Q70 54 64 80 Z" fill="#0C0A09"/>
+  <!-- Eyes & Smile -->
+  <circle cx="88" cy="82" r="3.5" fill="#1C1917"/>
+  <circle cx="112" cy="82" r="3.5" fill="#1C1917"/>
+  <path d="M92 98 Q100 105 108 98" stroke="#1C1917" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bgPangestu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bgPangestu)" rx="100"/>
+  <!-- Torso & Suit -->
+  <path d="M40 200 C40 145 65 135 100 135 C135 135 160 145 160 200 Z" fill="#0F172A"/>
+  <!-- White Collar & Red Tie -->
+  <polygon points="100,135 85,160 115,160" fill="#FFFFFF"/>
+  <polygon points="100,150 95,195 105,195" fill="#DC2626"/>
+  <!-- Neck -->
+  <rect x="88" y="112" width="24" height="26" fill="#D49E6A" rx="4"/>
+  <!-- Head & Hair -->
+  <ellipse cx="100" cy="85" rx="36" ry="42" fill="#D49E6A"/>
+  <path d="M64 78 C64 45 80 38 100 38 C120 38 136 45 136 78 Q125 50 100 50 Q75 50 64 78 Z" fill="#18181B"/>
+  <!-- Eyes & Smile -->
+  <circle cx="88" cy="83" r="3.5" fill="#18181B"/>
+  <circle cx="112" cy="83" r="3.5" fill="#18181B"/>
+  <path d="M91 100 Q100 108 109 100" stroke="#18181B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>
