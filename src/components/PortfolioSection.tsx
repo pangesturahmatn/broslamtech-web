@@ -33,31 +33,31 @@ export default function PortfolioSection() {
   const currentClient = clients[currentIndex] || clients[0];
 
   return (
-    <section id="portofolio" className="py-12 sm:py-16 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <section id="portofolio" className="py-8 sm:py-10 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
+        <div className="text-center max-w-4xl mx-auto space-y-1.5 mb-5 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase">
             <Building2 className="w-3.5 h-3.5" />
             <span>PORTOFOLIO BENGKEL &amp; CLIENT SHOWCASE</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug [text-wrap:balance]">
             Dipercaya Oleh Jaringan Bengkel Mobil Terkemuka
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-normal sm:leading-relaxed">
             Terbukti mengawal operasional harian bengkel multi-cabang dengan puluhan ribu unit entry, perputaran stok FIFO, dan nol selisih kasir.
           </p>
         </div>
 
         {/* Rotating Client Showcase */}
         <div
-          className="relative max-w-4xl mx-auto mb-8"
+          className="relative max-w-3xl mx-auto mb-4"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-lg dark:shadow-2xl transition-all duration-500">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+          <div className="bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md dark:shadow-xl transition-all duration-500">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3">
                 <span className="px-3.5 py-1 rounded-xl bg-amber-100 dark:bg-amber-500/15 border border-amber-300 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 font-mono text-xs font-black">
                   {currentClient.logoBadge}
@@ -78,7 +78,7 @@ export default function PortfolioSection() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-3.5 text-xs text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2.5 text-xs text-slate-700 dark:text-slate-300 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-slate-400" />
                 <span>Lokasi: <strong className="text-slate-900 dark:text-white">{currentClient.locations}</strong></span>
@@ -89,11 +89,11 @@ export default function PortfolioSection() {
               </div>
             </div>
 
-            <div className="pt-3.5 space-y-1.5">
+            <div className="pt-2.5 space-y-1">
               <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Dampak Operasional Nyata:
               </span>
-              <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed italic bg-white dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800">
+              <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed italic bg-white dark:bg-slate-950 p-3 rounded-xl border border-slate-200 dark:border-slate-800">
                 &ldquo;{currentClient.achievement}&rdquo;
               </p>
             </div>

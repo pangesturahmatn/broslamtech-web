@@ -35,7 +35,7 @@ body {
   background-color: #FFFFFF;
   color: #0F172A;
   overflow-x: hidden;
-  line-height: 1.48;
+  line-height: 1.44;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

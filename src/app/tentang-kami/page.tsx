@@ -14,21 +14,20 @@ export default function TentangKamiPage() {
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors selection:bg-amber-500 selection:text-slate-950">
       <Navbar />
 
-      <main className="pt-28">
+      <main className="pt-20 sm:pt-24">
         {/* Hero About */}
-        <section className="py-10 sm:py-14 bg-slate-50 dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
+        <section className="pt-6 pb-3 sm:pt-8 sm:pb-4 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
               <Sparkles className="w-3.5 h-3.5" />
               <span>PROFIL PERUSAHAAN &amp; KEPEMIMPINAN</span>
             </div>
             
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-              Membangun Ekosistem Digital Bengkel Mobil <br className="hidden sm:inline" />
-              Paling Tangguh di Indonesia.
+            <h1 className="text-2xl sm:text-4xl lg:text-[40px] font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug sm:leading-tight max-w-4xl mx-auto [text-wrap:balance]">
+              Membangun Ekosistem Digital Bengkel Mobil Paling Tangguh di Indonesia.
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-normal sm:leading-relaxed">
               BroSlam.Tech lahir dari peleburan dua nama gunung legendaris di Pulau Jawa: <strong>Gunung Bromo &amp; Gunung Slamet</strong>. 
               Melambangkan keteguhan fondasi sistem yang tidak goyah saat menghadapi fluktuasi ekonomi, volume servis padat, maupun ekspansi puluhan cabang bengkel.
             </p>
@@ -45,7 +44,7 @@ export default function TentangKamiPage() {
         <AppWarrantySection />
 
         {/* Bottom CTA */}
-        <section className="py-12 sm:py-14 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center transition-colors">
+        <section className="py-8 sm:py-10 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center transition-colors">
           <div className="max-w-3xl mx-auto px-4 space-y-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
               Siap Membawa Bengkel Mobil Anda Naik Kelas?

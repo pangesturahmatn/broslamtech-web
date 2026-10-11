@@ -17,7 +17,7 @@ export default function EcosystemPillars({
   const currentPillar = pillarsData.find((p) => p.id === activeTab) || pillarsData[0];
 
   return (
-    <section id="solusi" className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A1020] dark:to-[#070B14] border-b border-slate-200 dark:border-white/10 transition-colors">
+    <section id="solusi" className="py-8 sm:py-12 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A1020] dark:to-[#070B14] border-b border-slate-200 dark:border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -31,7 +31,7 @@ export default function EcosystemPillars({
             10 Pilar Ekosistem Bengkel 360°
           </h2>
           
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-normal max-w-2xl mx-auto">
             Sistem modular multi-cabang terintegrasi penuh: dari alur check-in baret mobil SA, monitor TV stall pitstop, kasir POS SAK ETAP, hingga WhatsApp reminder otomatis.
           </p>
         </div>

@@ -38,7 +38,7 @@ export default function NewsPortal() {
   return (
     <section
       id="portal-berita"
-      className="py-12 sm:py-16 bg-slate-50 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0D1527] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="py-8 sm:py-12 bg-slate-50 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0D1527] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Dynamic Ambient Glows (Only in dark mode) */}
       <div className="hidden dark:block absolute top-1/4 left-1/4 w-[500px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -47,7 +47,7 @@ export default function NewsPortal() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
+        <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-gradient-to-r dark:from-blue-500/15 dark:to-indigo-500/15 border border-blue-200 dark:border-blue-400/30 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-widest uppercase shadow-xs">
             <Newspaper className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>PORTAL INFORMASI &amp; MEDIA RESMI</span>
@@ -57,7 +57,7 @@ export default function NewsPortal() {
             Kabar Terkini, Wawasan &amp; Update Promo BroSlam.Tech
           </h2>
           
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-normal max-w-2xl mx-auto">
             Edukasi strategis manajemen bengkel, rilis arsitektur fitur terbaru, serta penawaran promo akselerasi digital untuk pemilik bengkel mandiri.
           </p>
         </div>

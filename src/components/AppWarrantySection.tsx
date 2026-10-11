@@ -48,30 +48,30 @@ export default function AppWarrantySection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0B1224] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <section className="py-8 sm:py-10 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0B1224] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
+        <div className="text-center max-w-4xl mx-auto space-y-1.5 mb-5 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-black tracking-widest uppercase">
             <span>ALUR PRESENTASI &amp; JAMINAN SISTEM</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug [text-wrap:balance]">
             5 Tahap Transformasi Menuju Bengkel Modern
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-normal">
             Struktur roadmap komprehensif yang dirancang untuk memastikan investasi sistem digital Anda memberikan imbal hasil (ROI) maksimal sejak bulan pertama.
           </p>
         </div>
 
         {/* 5-Step Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-2.5 mb-5">
           {steps.map((s, idx) => {
             const Icon = s.icon;
             return (
               <div
                 key={idx}
-                className="rounded-3xl bg-slate-50 dark:bg-white/[0.04] hover:bg-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/10 hover:border-amber-400 p-5 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-xl backdrop-blur-md"
+                className="rounded-2xl bg-slate-50 dark:bg-white/[0.04] hover:bg-white dark:hover:bg-white/[0.08] border border-slate-200 dark:border-white/10 hover:border-amber-400 p-4 sm:p-4.5 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 shadow-sm hover:shadow-xl backdrop-blur-md"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">

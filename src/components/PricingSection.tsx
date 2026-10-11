@@ -8,7 +8,7 @@ export default function PricingSection() {
   return (
     <section
       id="harga"
-      className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="py-8 sm:py-12 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Background ambient lighting in dark mode */}
       <div className="hidden dark:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -16,7 +16,7 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
+        <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-600 dark:text-amber-300 text-xs font-bold tracking-widest uppercase">
             <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
             <span>STRATEGI HARGA KHUSUS UMKM BENGKEL MOBIL</span>
