@@ -21,13 +21,8 @@ export default function EcosystemPillars({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3.5">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-400 text-xs font-bold tracking-widest uppercase">
-            <Layers className="w-3.5 h-3.5" />
-            <span>ARSITEKTUR LENGKAP KOPRA SCALE</span>
-          </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-2.5">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight [text-wrap:balance]">
             10 Pilar Ekosistem Bengkel 360°
           </h2>
           
