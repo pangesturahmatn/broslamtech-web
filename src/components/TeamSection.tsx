@@ -2,61 +2,86 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { executiveTeam } from "../data/team-data";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { executiveTeam as defaultTeam } from "../data/team-data";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function TeamSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [team, setTeam] = useState(defaultTeam);
+  const [activeIndex, setActiveIndex] = useState(1); // Utomo Nugroho (COO)
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-rotate every 4 seconds (pauses when user hovers or interacts)
+  // Fetch dynamic team if updated by admin
   useEffect(() => {
-    if (isPaused) return;
+    fetch("/api/team")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setTeam(json.data);
+        }
+      })
+      .catch((err) => console.error("Fetch team err:", err));
+  }, []);
+
+  // Auto-rotate every 5 seconds (pauses when user hovers or interacts)
+  useEffect(() => {
+    if (isPaused || team.length === 0) return;
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % executiveTeam.length);
-    }, 4000);
+      setActiveIndex((prev) => (prev + 1) % team.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, team.length]);
+
+  if (team.length === 0) return null;
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + executiveTeam.length) % executiveTeam.length);
+    setActiveIndex((prev) => (prev - 1 + team.length) % team.length);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % executiveTeam.length);
+    setActiveIndex((prev) => (prev + 1) % team.length);
   };
 
-  const currentLeader = executiveTeam[activeIndex];
+  const currentLeader = team[activeIndex] || team[0];
+
+  // Generate the 5 slots [-2, -1, 0, 1, 2] centered on activeIndex
+  const slots = [-2, -1, 0, 1, 2].map((offset) => {
+    const memberIndex = (activeIndex + offset + team.length) % team.length;
+    return {
+      offset,
+      memberIndex,
+      member: team[memberIndex],
+    };
+  });
 
   return (
     <section
       id="tim"
-      className="py-24 bg-[#0A0E1A] text-white relative overflow-hidden transition-colors"
+      className="py-24 sm:py-28 bg-[#070B14] text-white relative overflow-hidden transition-colors"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Subtle radial spotlight glow behind the active center leader */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[650px] h-[450px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-sky-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* 1. Large Iconic Quotation Mark */}
+        {/* 1. Large Iconic Quotation Mark (Kopra Mandiri Identical Elegance) */}
         <div className="flex justify-center mb-6">
-          <div className="text-5xl sm:text-6xl text-white/90 font-serif leading-none select-none">
+          <span className="text-6xl sm:text-7xl font-serif text-white/90 leading-none select-none">
             &ldquo;
-          </div>
+          </span>
         </div>
 
-        {/* 2. Testimonial / Narrative Quote */}
-        <div className="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center">
-          <p className="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed font-normal transition-opacity duration-300">
+        {/* 2. Executive Testimonial Quote */}
+        <div className="max-w-3xl mx-auto min-h-[90px] flex items-center justify-center px-4">
+          <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-normal tracking-wide transition-opacity duration-300">
             {currentLeader.quote}
           </p>
         </div>
 
-        {/* 3. Leader Name & Title (Bold & Crisp) */}
-        <div className="mt-7 space-y-1">
-          <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+        {/* 3. Leader Name & Title */}
+        <div className="mt-8 space-y-1.5">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             {currentLeader.name}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 font-medium">
@@ -64,44 +89,60 @@ export default function TeamSection() {
           </p>
         </div>
 
-        {/* 4. Semicircular Arc of Circular Avatars (Kopra by Mandiri Identical Layout) */}
-        <div className="relative mt-14 mb-8 flex items-center justify-center">
-          <div className="flex items-end justify-center gap-4 sm:gap-8 md:gap-12">
-            {executiveTeam.map((member, idx) => {
-              const isActive = idx === activeIndex;
+        {/* 4. Semicircular Arc of Avatars Curving Downwards at the Sides (⌒) */}
+        {/* Outer items sit lower in Y-axis, creating the Kopra downward dome curve */}
+        <div className="relative mt-14 mb-6 pt-4 pb-12 flex items-center justify-center">
+          <div className="flex items-start justify-center gap-2 sm:gap-6 md:gap-10">
+            {slots.map(({ offset, memberIndex, member }) => {
+              const isCenter = offset === 0;
+              const isInner = Math.abs(offset) === 1;
+
+              // Downward curvature styling
+              // Center: top (translate-y-0), Inner: down (translate-y-8 sm:translate-y-12), Outer: down further (translate-y-16 sm:translate-y-24)
+              const verticalOffsetClass = isCenter
+                ? "translate-y-0 z-30"
+                : isInner
+                ? "translate-y-8 sm:translate-y-12 z-20"
+                : "translate-y-16 sm:translate-y-24 z-10 hidden sm:flex";
+
+              const sizeClass = isCenter
+                ? "w-28 h-28 sm:w-36 sm:h-36 ring-4 ring-white shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
+                : isInner
+                ? "w-20 h-20 sm:w-26 sm:h-26 ring-2 ring-white/30 hover:ring-white/70 hover:opacity-90"
+                : "w-16 h-16 sm:w-22 sm:h-22 ring-1 ring-white/20 hover:ring-white/50 hover:opacity-75";
+
+              const opacityClass = isCenter
+                ? "opacity-100 scale-100"
+                : isInner
+                ? "opacity-70 scale-95"
+                : "opacity-45 scale-85";
+
               return (
                 <button
-                  key={member.id}
+                  key={member.id + offset}
                   type="button"
-                  onClick={() => setActiveIndex(idx)}
-                  className={`relative rounded-full transition-all duration-500 ease-out cursor-pointer group flex flex-col items-center ${
-                    isActive
-                      ? "scale-115 sm:scale-125 z-20 translate-y-0"
-                      : "scale-85 sm:scale-95 opacity-50 hover:opacity-85 z-10 translate-y-4 sm:translate-y-6"
-                  }`}
+                  onClick={() => setActiveIndex(memberIndex)}
+                  className={`relative rounded-full transition-all duration-500 ease-out cursor-pointer group flex flex-col items-center ${verticalOffsetClass} ${opacityClass}`}
+                  title={member.name}
                 >
-                  {/* Circular Avatar Container with Ring */}
-                  <div
-                    className={`relative rounded-full overflow-hidden transition-all duration-300 ${
-                      isActive
-                        ? "w-24 h-24 sm:w-32 sm:h-32 ring-4 ring-white/90 shadow-[0_10px_35px_rgba(0,0,0,0.6)]"
-                        : "w-20 h-20 sm:w-24 sm:h-24 ring-2 ring-white/20 hover:ring-white/50"
-                    }`}
-                  >
+                  {/* Circular Avatar with crisp photographic portrait */}
+                  <div className={`relative rounded-full overflow-hidden transition-all duration-300 bg-slate-900 ${sizeClass}`}>
                     <Image
                       src={member.avatar}
                       alt={member.name}
                       fill
-                      className="object-cover object-top"
+                      sizes="(max-width: 640px) 100px, 150px"
+                      className="object-cover object-top filter brightness-105"
+                      priority={isCenter}
                     />
                   </div>
 
-                  {/* Role Tag Below Avatar */}
+                  {/* Subtle Role Tag (CEO, COO, CTO, CFO, VP) */}
                   <span
-                    className={`text-[10px] font-black uppercase tracking-wider mt-3 px-2 py-0.5 rounded-full transition-all ${
-                      isActive
-                        ? "bg-amber-400 text-black shadow-md font-bold"
-                        : "text-slate-400 bg-white/5 group-hover:text-white"
+                    className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider mt-3 px-2.5 py-0.5 rounded-full transition-all ${
+                      isCenter
+                        ? "bg-amber-400 text-slate-950 shadow-md"
+                        : "text-slate-400 bg-white/5 group-hover:text-white group-hover:bg-white/10"
                     }`}
                   >
                     {member.role}
@@ -113,12 +154,12 @@ export default function TeamSection() {
         </div>
 
         {/* 5. Navigation Arrows Directly Below Center Avatar (Exact Kopra Mandiri Style) */}
-        <div className="flex items-center justify-center gap-3 mt-4">
+        <div className="flex items-center justify-center gap-3 mt-10">
           <button
             type="button"
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
-            aria-label="Previous Leader"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
+            aria-label="Pemimpin Sebelumnya"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -126,8 +167,8 @@ export default function TeamSection() {
           <button
             type="button"
             onClick={handleNext}
-            className="w-10 h-10 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
-            aria-label="Next Leader"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/20 hover:border-white transition-all flex items-center justify-center cursor-pointer shadow-md active:scale-95"
+            aria-label="Pemimpin Selanjutnya"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

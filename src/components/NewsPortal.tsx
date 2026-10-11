@@ -143,28 +143,7 @@ export default function NewsPortal() {
           ))}
         </div>
 
-        {/* Submission & Admin Banner */}
-        <div className="rounded-3xl bg-slate-900/90 border border-slate-800 p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="space-y-0.5">
-            <h4 className="text-sm font-black text-white">
-              Kelola Berita &amp; Promo Secara Dinamis
-            </h4>
-            <p className="text-xs text-slate-400">
-              Admin dapat menambah materi promo baru atau wawasan industri langsung ke portal resmi.
-            </p>
-          </div>
-          <div className="flex gap-3">
-            <Link
-              href="/admin/blog"
-              className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
-            >
-              <PlusCircle className="w-3.5 h-3.5" />
-              <span>Buka Panel Admin Blog &amp; Promo</span>
-            </Link>
-          </div>
         </div>
-
-      </div>
     </section>
   );
 }

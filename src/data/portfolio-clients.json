@@ -1,0 +1,42 @@
+[
+  {
+    "id": "arumsari-all",
+    "name": "Bengkel Mobil ARUMSARI (All Cabang)",
+    "category": "Spesialis Kaki-Kaki, Mesin & AC Mobil Modern",
+    "locations": "Purwokerto Pusat, ASAC Purwokerto, Tasikmalaya",
+    "stallCount": "16+ Stall Pitstop Aktif",
+    "achievement": "Otomasi 100% alur SPK digital, 0 nota kertas, dan laporan laba kotor HPP FIFO real-time dari 3 cabang.",
+    "logoBadge": "ARUMSARI",
+    "verified": true
+  },
+  {
+    "id": "bengkel-tomo",
+    "name": "Bengkel Tomo Partner",
+    "category": "Bengkel Umum & Tune Up Injeksi Cepat",
+    "locations": "Jawa Tengah & Jawa Barat",
+    "stallCount": "8 Stall Pitstop",
+    "achievement": "Peningkatan retensi pelanggan berkala H+30 & H+90 hari via integrasi WhatsApp Gateway mandiri tanpa biaya SaaS mahal.",
+    "logoBadge": "TOMO",
+    "verified": true
+  },
+  {
+    "id": "bengkel-mandiri-jaya",
+    "name": "Bengkel Auto Mandiri Sejahtera",
+    "category": "Spesialis Transmisi Matic & Engine Overhaul",
+    "locations": "Cirebon & Brebes",
+    "stallCount": "6 Stall Pitstop",
+    "achievement": "Pencegahan kebocoran stok sparepart hingga 0% dengan barcode scanner mobile kasir langsung di pitstop bengkel.",
+    "logoBadge": "AUTO MANDIRI",
+    "verified": true
+  },
+  {
+    "id": "garasi-prima-motor",
+    "name": "Garasi Prima Body & Paint",
+    "category": "Ketok Magic, Cat Oven & Detailing Mobil",
+    "locations": "Bandung Timur",
+    "stallCount": "10 Stall Kerja",
+    "achievement": "Monitoring durasi pengerjaan per panel cat secara presisi di layar TV Pitstop tanpa saling tunggu.",
+    "logoBadge": "PRIMA",
+    "verified": true
+  }
+]

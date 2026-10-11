@@ -1,20 +1,36 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { portfolioClients } from "../data/portfolio-data";
-import { Building2, CheckCircle2, MapPin, Wrench, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { portfolioClients as defaultClients } from "../data/portfolio-data";
+import { Building2, CheckCircle2, MapPin, Wrench, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function PortfolioSection() {
+  const [clients, setClients] = useState(defaultClients);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Fetch dynamic clients from API if updated by admin
   useEffect(() => {
-    if (isPaused) return;
+    fetch("/api/portfolio")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setClients(json.data);
+        }
+      })
+      .catch((err) => console.error("Fetch portfolio err:", err));
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || clients.length === 0) return;
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % portfolioClients.length);
-    }, 4000);
+      setCurrentIndex((prev) => (prev + 1) % clients.length);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [isPaused]);
+  }, [isPaused, clients.length]);
+
+  if (clients.length === 0) return null;
+  const currentClient = clients[currentIndex] || clients[0];
 
   return (
     <section id="portofolio" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
@@ -44,14 +60,14 @@ export default function PortfolioSection() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
               <div className="flex items-center gap-3">
                 <span className="px-3.5 py-1 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-black">
-                  {portfolioClients[currentIndex].logoBadge}
+                  {currentClient.logoBadge}
                 </span>
                 <div>
                   <h3 className="text-lg sm:text-xl font-black text-white">
-                    {portfolioClients[currentIndex].name}
+                    {currentClient.name}
                   </h3>
                   <p className="text-xs text-amber-300/80 font-medium">
-                    {portfolioClients[currentIndex].category}
+                    {currentClient.category}
                   </p>
                 </div>
               </div>
@@ -65,11 +81,11 @@ export default function PortfolioSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-5 text-xs text-slate-300 border-b border-slate-800">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-slate-400" />
-                <span>Lokasi: <strong className="text-white">{portfolioClients[currentIndex].locations}</strong></span>
+                <span>Lokasi: <strong className="text-white">{currentClient.locations}</strong></span>
               </div>
               <div className="flex items-center gap-2">
                 <Wrench className="w-4 h-4 text-slate-400" />
-                <span>Kapasitas: <strong className="text-white">{portfolioClients[currentIndex].stallCount}</strong></span>
+                <span>Kapasitas: <strong className="text-white">{currentClient.stallCount}</strong></span>
               </div>
             </div>
 
@@ -78,7 +94,7 @@ export default function PortfolioSection() {
                 Dampak Operasional Nyata:
               </span>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed italic bg-slate-950 p-4 rounded-2xl border border-slate-800">
-                &ldquo;{portfolioClients[currentIndex].achievement}&rdquo;
+                &ldquo;{currentClient.achievement}&rdquo;
               </p>
             </div>
           </div>
@@ -86,23 +102,25 @@ export default function PortfolioSection() {
           {/* Controls */}
           <button
             type="button"
-            onClick={() => setCurrentIndex((prev) => (prev - 1 + portfolioClients.length) % portfolioClients.length)}
+            onClick={() => setCurrentIndex((prev) => (prev - 1 + clients.length) % clients.length)}
             className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 shadow-xl flex items-center justify-center transition-all cursor-pointer"
+            aria-label="Previous client"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
 
           <button
             type="button"
-            onClick={() => setCurrentIndex((prev) => (prev + 1) % portfolioClients.length)}
+            onClick={() => setCurrentIndex((prev) => (prev + 1) % clients.length)}
             className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 shadow-xl flex items-center justify-center transition-all cursor-pointer"
+            aria-label="Next client"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Dots */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {portfolioClients.map((client, idx) => (
+          {/* Selector Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+            {clients.map((client: any, idx: number) => (
               <button
                 key={client.id}
                 onClick={() => setCurrentIndex(idx)}

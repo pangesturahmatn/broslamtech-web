@@ -66,3 +66,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: error?.message || "Internal server error" }, { status: 500 });
   }
 }
+
+
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    if (!id) return NextResponse.json({ success: false, error: "ID wajib disertakan" }, { status: 400 });
+
+    let articles = getArticles();
+    articles = articles.filter((a: any) => a.id !== id);
+    saveArticles(articles);
+
+    return NextResponse.json({ success: true });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}

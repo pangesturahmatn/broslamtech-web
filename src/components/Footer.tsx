@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li><Link href="/#kalkulator" className="hover:text-amber-400 transition-colors">📊 Kalkulator Kebocoran Uang</Link></li>
               <li><Link href="/#portal-berita" className="hover:text-amber-400 transition-colors">📰 Portal Berita &amp; Promo</Link></li>
-              <li><Link href="/admin/blog" className="hover:text-amber-400 transition-colors text-slate-300">✍️ Panel Admin Berita &amp; Promo</Link></li>
+              
             </ul>
           </div>
 
