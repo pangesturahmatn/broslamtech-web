@@ -19,7 +19,10 @@ import {
   EyeOff,
   RefreshCw,
   Zap,
-  Sparkles
+  Sparkles,
+  Pencil,
+  Upload,
+  X
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -59,6 +62,8 @@ export default function AdminDashboardPage() {
   // Team States
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [loadingTeam, setLoadingTeam] = useState(false);
+  const [editingTeamId, setEditingTeamId] = useState<string | null>(null);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
   const [memberName, setMemberName] = useState("");
   const [memberRole, setMemberRole] = useState("VP");
   const [memberTitle, setMemberTitle] = useState("Vice President");
@@ -230,37 +235,101 @@ export default function AdminDashboardPage() {
     }
   };
 
-  const handleAddTeam = async (e: React.FormEvent) => {
+  const handleSubmitTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     setTeamSubmitting(true);
     setTeamMsg("");
     try {
+      const payload = {
+        id: editingTeamId || undefined,
+        name: memberName,
+        role: memberRole,
+        title: memberTitle,
+        companySubtitle: memberCompanySubtitle,
+        quote: memberQuote,
+        bio: memberBio,
+        avatar: memberAvatar,
+        focus: memberFocus
+      };
+      const method = editingTeamId ? "PUT" : "POST";
       const res = await fetch("/api/team", {
-        method: "POST",
+        method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: memberName,
-          role: memberRole,
-          title: memberTitle,
-          companySubtitle: memberCompanySubtitle,
-          quote: memberQuote,
-          avatar: memberAvatar,
-          bio: memberBio,
-          focus: memberFocus,
-        }),
+        body: JSON.stringify(payload)
       });
       const json = await res.json();
       if (json.success) {
-        setTeamMsg("Profil dewan eksekutif / testimoni berhasil ditambahkan!");
+        setTeamMsg(editingTeamId ? "Profil anggota dewan eksekutif berhasil diperbarui!" : "Profil dewan eksekutif / testimoni berhasil ditambahkan!");
+        setEditingTeamId(null);
         setMemberName("");
+        setMemberRole("LEAD");
+        setMemberTitle("");
+        setMemberCompanySubtitle("");
         setMemberQuote("");
         setMemberBio("");
+        setMemberAvatar("/assets/team/fuad.jpg");
+        setMemberFocus("");
         fetchTeam();
+      } else {
+        setTeamMsg(json.error || "Gagal menyimpan data dewan");
       }
-    } catch (e) {
-      console.error(e);
+    } catch (_) {
+      setTeamMsg("Terjadi kesalahan jaringan.");
     } finally {
       setTeamSubmitting(false);
+    }
+  };
+
+  const handleEditTeam = (m: any) => {
+    setEditingTeamId(m.id);
+    setMemberName(m.name || "");
+    setMemberRole(m.role || "LEAD");
+    setMemberTitle(m.title || "");
+    setMemberCompanySubtitle(m.companySubtitle || "");
+    setMemberQuote(m.quote || "");
+    setMemberBio(m.bio || "");
+    setMemberAvatar(m.avatar || "/assets/team/fuad.jpg");
+    setMemberFocus(Array.isArray(m.focus) ? m.focus.join(", ") : (m.focus || ""));
+    setTeamMsg("");
+    window.scrollTo({ top: 350, behavior: "smooth" });
+  };
+
+  const handleCancelEditTeam = () => {
+    setEditingTeamId(null);
+    setMemberName("");
+    setMemberRole("LEAD");
+    setMemberTitle("");
+    setMemberCompanySubtitle("");
+    setMemberQuote("");
+    setMemberBio("");
+    setMemberAvatar("/assets/team/fuad.jpg");
+    setMemberFocus("");
+    setTeamMsg("");
+  };
+
+  const handleAvatarFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingAvatar(true);
+    setTeamMsg("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const json = await res.json();
+      if (json.success && json.url) {
+        setMemberAvatar(json.url);
+        setTeamMsg("Foto avatar berhasil diunggah!");
+      } else {
+        setTeamMsg(json.error || "Gagal mengunggah foto.");
+      }
+    } catch (err: any) {
+      setTeamMsg("Gagal mengunggah foto: " + err.message);
+    } finally {
+      setUploadingAvatar(false);
     }
   };
 
@@ -778,10 +847,32 @@ export default function AdminDashboardPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
             <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-              <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2 mb-4">
-                <PlusCircle className="w-4 h-4 text-amber-500" />
-                <span>Tambah / Update Anggota Tim Eksekutif</span>
-              </h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
+                  {editingTeamId ? (
+                    <Pencil className="w-4 h-4 text-amber-600" />
+                  ) : (
+                    <PlusCircle className="w-4 h-4 text-amber-500" />
+                  )}
+                  <span>{editingTeamId ? "Edit Profil Anggota Tim" : "Tambah Anggota Tim Eksekutif"}</span>
+                </h2>
+                {editingTeamId && (
+                  <button
+                    type="button"
+                    onClick={handleCancelEditTeam}
+                    className="px-2.5 py-1 text-xs font-bold text-rose-600 hover:bg-rose-50 rounded-lg transition-colors flex items-center gap-1 border border-rose-200"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                    <span>Batal Edit</span>
+                  </button>
+                )}
+              </div>
+              {editingTeamId && (
+                <div className="mb-4 p-3 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold flex items-center justify-between">
+                  <span>Sedang mengedit: <strong>{memberName || "Anggota Tim"}</strong></span>
+                  <span className="text-[10px] bg-amber-200 px-2 py-0.5 rounded uppercase font-black">Mode Edit</span>
+                </div>
+              )}
 
               {teamMsg && (
                 <div className="mb-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center gap-2">
@@ -790,7 +881,7 @@ export default function AdminDashboardPage() {
                 </div>
               )}
 
-              <form onSubmit={handleAddTeam} className="space-y-4">
+              <form onSubmit={handleSubmitTeam} className="space-y-4">
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Nama Lengkap & Gelar *
@@ -847,8 +938,34 @@ export default function AdminDashboardPage() {
 
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
-                    URL Foto Portrait Avatar *
+                    Foto Portrait Avatar *
                   </label>
+                  <div className="flex items-center gap-3.5 mb-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-amber-400/60 shrink-0 bg-slate-200">
+                      <Image
+                        src={memberAvatar || "/assets/team/fuad.jpg"}
+                        alt="Preview"
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <label className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs cursor-pointer transition-all shadow-xs">
+                        <Upload className="w-3.5 h-3.5" />
+                        <span>{uploadingAvatar ? "Mengunggah..." : "Upload Foto Baru"}</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleAvatarFileUpload}
+                          disabled={uploadingAvatar}
+                          className="hidden"
+                        />
+                      </label>
+                      <p className="text-[10px] text-slate-500">
+                        Format: JPG, PNG, WEBP (rasio portrait disarankan).
+                      </p>
+                    </div>
+                  </div>
                   <input
                     type="text"
                     value={memberAvatar}
@@ -875,10 +992,14 @@ export default function AdminDashboardPage() {
 
                 <button
                   type="submit"
-                  disabled={teamSubmitting}
+                  disabled={teamSubmitting || uploadingAvatar}
                   className="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
-                  {teamSubmitting ? "Menyimpan..." : "Simpan Dewan Eksekutif"}
+                  {teamSubmitting
+                    ? "Menyimpan Data..."
+                    : editingTeamId
+                    ? "Update Perubahan Anggota Tim"
+                    : "Simpan Dewan Eksekutif"}
                 </button>
               </form>
             </div>
@@ -924,14 +1045,24 @@ export default function AdminDashboardPage() {
                     </p>
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteTeam(m.id)}
-                    className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shrink-0"
-                    title="Hapus Profil"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => handleEditTeam(m)}
+                      className="p-2 rounded-xl text-slate-500 hover:text-amber-600 hover:bg-amber-50 transition-all cursor-pointer"
+                      title="Edit Profil & Foto"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteTeam(m.id)}
+                      className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer"
+                      title="Hapus Profil"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

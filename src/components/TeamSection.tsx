@@ -7,6 +7,17 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function TeamSection() {
   const [team, setTeam] = useState(defaultTeam);
+
+  useEffect(() => {
+    fetch("/api/team")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          setTeam(json.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
   const [activeIndex, setActiveIndex] = useState(1); // Default center
   const [isPaused, setIsPaused] = useState(false);
 

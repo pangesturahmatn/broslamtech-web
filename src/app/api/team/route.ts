@@ -75,3 +75,39 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
+
+export async function PUT(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, name, role, title, companySubtitle, quote, bio, avatar, focus } = body;
+
+    if (!id) {
+      return NextResponse.json({ success: false, error: "ID anggota tim wajib disertakan" }, { status: 400 });
+    }
+
+    let team = getTeam();
+    const index = team.findIndex((m: any) => m.id === id);
+    if (index === -1) {
+      return NextResponse.json({ success: false, error: "Anggota tim tidak ditemukan" }, { status: 404 });
+    }
+
+    team[index] = {
+      ...team[index],
+      name: name ?? team[index].name,
+      role: role ?? team[index].role,
+      title: title ?? team[index].title,
+      companySubtitle: companySubtitle ?? team[index].companySubtitle,
+      quote: quote ?? team[index].quote,
+      bio: bio ?? team[index].bio,
+      avatar: avatar ?? team[index].avatar,
+      focus: Array.isArray(focus)
+        ? focus
+        : (focus ? focus.split(",").map((s: string) => s.trim()) : team[index].focus),
+    };
+
+    saveTeam(team);
+    return NextResponse.json({ success: true, data: team[index] });
+  } catch (err: any) {
+    return NextResponse.json({ success: false, error: err.message }, { status: 500 });
+  }
+}
