@@ -1,10 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { portfolioClients } from "../data/portfolio-data";
-import { Building2, CheckCircle2, MapPin, Wrench, ShieldCheck, Star } from "lucide-react";
+import { Building2, CheckCircle2, MapPin, Wrench, ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 export default function PortfolioSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % portfolioClients.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
   return (
     <section id="portofolio" className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -23,65 +34,88 @@ export default function PortfolioSection() {
           </p>
         </div>
 
-        {/* Portfolio Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {portfolioClients.map((client) => (
-            <div
-              key={client.id}
-              className="rounded-3xl bg-slate-900/80 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl group"
-            >
-              <div className="space-y-4">
-                {/* Header item */}
-                <div className="flex items-start justify-between">
-                  <div className="px-3 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 font-mono text-xs font-black tracking-wider">
-                    {client.logoBadge}
-                  </div>
-                  <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                    <CheckCircle2 className="w-3 h-3" />
-                    <span>Terverifikasi Live</span>
-                  </div>
-                </div>
-
+        {/* Rotating Client Showcase (Kopra Testimonials Style) */}
+        <div
+          className="relative max-w-4xl mx-auto mb-12"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl transition-all duration-500">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+              <div className="flex items-center gap-3">
+                <span className="px-3.5 py-1 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-black">
+                  {portfolioClients[currentIndex].logoBadge}
+                </span>
                 <div>
-                  <h3 className="text-base font-black text-white group-hover:text-amber-300 transition-colors leading-snug">
-                    {client.name}
+                  <h3 className="text-lg sm:text-xl font-black text-white">
+                    {portfolioClients[currentIndex].name}
                   </h3>
-                  <p className="text-xs text-amber-200/80 font-medium mt-0.5">
-                    {client.category}
+                  <p className="text-xs text-amber-300/80 font-medium">
+                    {portfolioClients[currentIndex].category}
                   </p>
                 </div>
-
-                <div className="space-y-1.5 text-xs text-slate-400 pt-2 border-t border-slate-800">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                    <span>{client.locations}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Wrench className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                    <span>Kapasitas: <strong className="text-slate-200">{client.stallCount}</strong></span>
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800/80 text-xs text-slate-300 leading-relaxed">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block mb-1">
-                    Dampak Operasional:
-                  </span>
-                  {client.achievement}
-                </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                <span className="flex items-center gap-1 text-amber-400">
-                  <Star className="w-3 h-3 fill-amber-400" />
-                  <Star className="w-3 h-3 fill-amber-400" />
-                  <Star className="w-3 h-3 fill-amber-400" />
-                  <Star className="w-3 h-3 fill-amber-400" />
-                  <Star className="w-3 h-3 fill-amber-400" />
-                </span>
-                <span className="font-semibold text-slate-400">Production Live</span>
+              <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Terverifikasi Live Production</span>
               </div>
             </div>
-          ))}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-5 text-xs text-slate-300 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-slate-400" />
+                <span>Lokasi: <strong className="text-white">{portfolioClients[currentIndex].locations}</strong></span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Wrench className="w-4 h-4 text-slate-400" />
+                <span>Kapasitas: <strong className="text-white">{portfolioClients[currentIndex].stallCount}</strong></span>
+              </div>
+            </div>
+
+            <div className="pt-5 space-y-2">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                Dampak Operasional Nyata:
+              </span>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed italic bg-slate-950 p-4 rounded-2xl border border-slate-800">
+                &ldquo;{portfolioClients[currentIndex].achievement}&rdquo;
+              </p>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <button
+            type="button"
+            onClick={() => setCurrentIndex((prev) => (prev - 1 + portfolioClients.length) % portfolioClients.length)}
+            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 shadow-xl flex items-center justify-center transition-all cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setCurrentIndex((prev) => (prev + 1) % portfolioClients.length)}
+            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 shadow-xl flex items-center justify-center transition-all cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {portfolioClients.map((client, idx) => (
+              <button
+                key={client.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                  currentIndex === idx
+                    ? "bg-amber-400 text-black font-black scale-105"
+                    : "bg-slate-800 text-slate-400 hover:text-white"
+                }`}
+              >
+                {client.name.split(" ")[0]} {client.name.split(" ")[1] || ""}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Banner CTA Bergabung */}

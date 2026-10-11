@@ -1,90 +1,152 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { executiveTeam } from "../data/team-data";
-import { Users, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Users, ChevronLeft, ChevronRight, ShieldCheck, Star } from "lucide-react";
 
 export default function TeamSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-rotate every 3.5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % executiveTeam.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + executiveTeam.length) % executiveTeam.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % executiveTeam.length);
+  };
+
   return (
-    <section id="tim" className="py-24 bg-slate-900 relative overflow-hidden border-t border-slate-800">
+    <section id="tim" className="py-24 bg-white relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-black tracking-widest uppercase">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-extrabold tracking-widest uppercase">
             <Users className="w-3.5 h-3.5" />
             <span>DEWAN EKSEKUTIF &amp; TIM PENGEMBANG</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             Kepemimpinan Berpengalaman di Balik BroSlam.Tech
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Kombinasi solid antara praktisi puluhan tahun operasional bengkel mobil nyata, arsitektur software enterprise Next.js, dan akuntan profesional SAK ETAP.
           </p>
         </div>
 
-        {/* 4 Executive Leaders Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {executiveTeam.map((member) => (
-            <div
-              key={member.id}
-              className="rounded-3xl bg-slate-950 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl group"
-            >
-              <div className="space-y-4">
-                {/* Avatar Badge */}
-                <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center p-2.5 shadow-inner">
-                    <Image
-                      src={member.avatar}
-                      alt={member.name}
-                      width={48}
-                      height={48}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs font-black tracking-widest">
-                    {member.role}
-                  </span>
+        {/* Interactive Auto-Rotating Carousel (Kopra Mandiri Testimonial Style) */}
+        <div
+          className="relative max-w-4xl mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Main Card */}
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-xl transition-all duration-500">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              
+              {/* Avatar & Role Badge */}
+              <div className="md:col-span-4 flex flex-col items-center text-center space-y-3">
+                <div className="relative w-28 h-28 rounded-2xl bg-white border border-slate-200 flex items-center justify-center p-3 shadow-md">
+                  <Image
+                    src={executiveTeam[currentIndex].avatar}
+                    alt={executiveTeam[currentIndex].name}
+                    width={90}
+                    height={90}
+                    className="object-contain"
+                  />
                 </div>
-
                 <div>
-                  <h3 className="text-sm font-black text-white group-hover:text-amber-300 transition-colors leading-tight">
-                    {member.name}
+                  <span className="px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-700 font-mono text-xs font-black tracking-widest">
+                    {executiveTeam[currentIndex].role}
+                  </span>
+                  <div className="text-[11px] font-bold text-slate-500 mt-1.5">
+                    BroSlam.Tech Core Leader
+                  </div>
+                </div>
+              </div>
+
+              {/* Bio & Details */}
+              <div className="md:col-span-8 space-y-4 text-left">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+                    {executiveTeam[currentIndex].name}
                   </h3>
-                  <p className="text-[11px] font-semibold text-slate-400 mt-0.5">
-                    {member.title}
+                  <p className="text-xs font-bold text-blue-700 uppercase tracking-wider mt-0.5">
+                    {executiveTeam[currentIndex].title}
                   </p>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {member.bio}
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic border-l-2 border-amber-500 pl-4">
+                  &ldquo;{executiveTeam[currentIndex].bio}&rdquo;
                 </p>
 
-                {/* Focus badges */}
-                <div className="space-y-1.5 pt-2 border-t border-slate-900">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">
+                <div className="space-y-1.5 pt-2">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
                     Fokus Tanggung Jawab:
                   </span>
-                  <div className="flex flex-wrap gap-1">
-                    {member.focus.map((f, i) => (
+                  <div className="flex flex-wrap gap-1.5">
+                    {executiveTeam[currentIndex].focus.map((f, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded-md bg-slate-900 text-slate-300 text-[10px] font-semibold border border-slate-800"
+                        className="px-2.5 py-1 rounded-lg bg-white text-slate-700 text-xs font-semibold border border-slate-200 shadow-xs"
                       >
-                        {f}
+                        ✓ {f}
                       </span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 mt-4 border-t border-slate-900 flex items-center justify-between text-xs text-slate-400">
-                <span className="text-[11px] text-slate-500 font-mono">BroSlam.Tech Core</span>
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Carousel Controls (Previous / Next Buttons) */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-black hover:bg-slate-100 shadow-lg flex items-center justify-center transition-all cursor-pointer"
+            aria-label="Previous Team Member"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            type="button"
+            onClick={handleNext}
+            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white border border-slate-300 text-slate-700 hover:text-black hover:bg-slate-100 shadow-lg flex items-center justify-center transition-all cursor-pointer"
+            aria-label="Next Team Member"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Indicator Dots / Tabs */}
+          <div className="flex items-center justify-center gap-2.5 mt-8">
+            {executiveTeam.map((member, idx) => (
+              <button
+                key={member.id}
+                onClick={() => setCurrentIndex(idx)}
+                className={`transition-all cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold ${
+                  currentIndex === idx
+                    ? "bg-[#0F172A] text-white shadow-md scale-105"
+                    : "bg-slate-200 text-slate-600 hover:bg-slate-300"
+                }`}
+              >
+                <span>{member.role}</span>
+                {currentIndex === idx && <span className="text-[10px] text-amber-400">●</span>}
+              </button>
+            ))}
+          </div>
+
         </div>
 
       </div>
