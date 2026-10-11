@@ -12,7 +12,7 @@ export default function PricingSection({ onOpenCatalog }: PricingSectionProps) {
   return (
     <section
       id="harga"
-      className="py-8 sm:py-12 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="scroll-mt-20 sm:scroll-mt-24 py-10 sm:py-14 bg-slate-50/70 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

@@ -38,7 +38,7 @@ export default function NewsPortal() {
   return (
     <section
       id="portal-berita"
-      className="scroll-mt-24 py-8 sm:py-12 bg-white dark:bg-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="scroll-mt-24 py-10 sm:py-14 bg-slate-50/50 dark:bg-[#070B14] bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Dynamic Ambient Glows (Only in dark mode) */}
       <div className="hidden dark:block absolute top-1/4 left-1/4 w-[500px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
