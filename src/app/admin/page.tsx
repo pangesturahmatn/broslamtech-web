@@ -279,34 +279,34 @@ export default function AdminDashboardPage() {
   // -------------------------------------------------------------
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#070B14] flex items-center justify-center p-4 selection:bg-amber-400 selection:text-slate-950">
-        <div className="max-w-md w-full bg-slate-900/90 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl text-center">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 selection:bg-amber-400 selection:text-slate-950">
+        <div className="max-w-md w-full bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-2xl text-center">
           
-          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-amber-500/20 to-sky-500/20 border border-white/15 flex items-center justify-center text-amber-400 shadow-inner">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 shadow-xs">
             <ShieldCheck className="w-8 h-8" />
           </div>
 
-          <h1 className="text-2xl font-black text-white tracking-tight">
-            BroSlam<span className="text-amber-400">.Tech</span>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+            BroSlam<span className="text-amber-500">.Tech</span>
           </h1>
-          <p className="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-widest">
+          <p className="text-xs font-bold text-slate-500 mt-1 uppercase tracking-widest">
             Internal Master Control Room
           </p>
 
-          <p className="text-xs text-slate-300 mt-4 leading-relaxed">
+          <p className="text-xs text-slate-600 mt-4 leading-relaxed">
             Portal ini terisolasi untuk mengelola publikasi berita, promo kuartal, portofolio bengkel rekanan, dan dewan eksekutif.
           </p>
 
           {authError && (
-            <div className="mt-4 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0" />
+            <div className="mt-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
               <span>{authError}</span>
             </div>
           )}
 
           <form onSubmit={handleLogin} className="mt-6 space-y-4">
             <div className="relative text-left">
-              <label className="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2">
+              <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-2">
                 Kunci Otorisasi Admin
               </label>
               <div className="relative">
@@ -316,12 +316,12 @@ export default function AdminDashboardPage() {
                   onChange={(e) => setPasscode(e.target.value)}
                   placeholder="Ketik passcode admin..."
                   required
-                  className="w-full bg-slate-950 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 pr-10"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 pr-10 shadow-xs"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPasscode(!showPasscode)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
                 >
                   {showPasscode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -330,16 +330,16 @@ export default function AdminDashboardPage() {
 
             <button
               type="submit"
-              className="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm tracking-wide shadow-md transition-all cursor-pointer active:scale-95"
+              className="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm tracking-wide shadow-md transition-all cursor-pointer active:scale-95"
             >
               Masuk ke Panel Kontrol
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-white/10 text-center">
+          <div className="mt-8 pt-6 border-t border-slate-100 text-center">
             <Link
               href="/"
-              className="text-xs text-slate-400 hover:text-amber-400 transition-colors inline-flex items-center gap-1.5"
+              className="text-xs font-semibold text-slate-500 hover:text-amber-600 transition-colors inline-flex items-center gap-1.5"
             >
               <span>← Kembali ke Halaman Depan Publik</span>
             </Link>
@@ -354,10 +354,10 @@ export default function AdminDashboardPage() {
   // VIEW: AUTHENTICATED ADMIN DASHBOARD
   // -------------------------------------------------------------
   return (
-    <div className="min-h-screen bg-[#070B14] text-white selection:bg-amber-400 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-100 text-slate-900 selection:bg-amber-400 selection:text-slate-950 flex flex-col font-sans">
       
       {/* Top Admin Navbar */}
-      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40">
+      <header className="border-b border-slate-800 bg-slate-950 text-white sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           
           <div className="flex items-center gap-3">
@@ -367,7 +367,7 @@ export default function AdminDashboardPage() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-black text-white text-base">BroSlam.Tech Admin</span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[10px] font-extrabold uppercase tracking-wide">
                   Sesi Terverifikasi
                 </span>
               </div>
@@ -379,7 +379,7 @@ export default function AdminDashboardPage() {
             <Link
               href="/"
               target="_blank"
-              className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-xs text-slate-300 hover:text-white transition-all flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-200 hover:text-white transition-all flex items-center gap-1.5 shadow-xs"
             >
               <span>Lihat Web Publik</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -388,7 +388,7 @@ export default function AdminDashboardPage() {
             <button
               type="button"
               onClick={handleLogout}
-              className="px-3.5 py-1.5 rounded-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-xs text-red-400 hover:text-red-300 transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-3.5 py-1.5 rounded-full bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-xs text-rose-400 hover:text-rose-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span>Keluar Sesi</span>
@@ -399,17 +399,15 @@ export default function AdminDashboardPage() {
       </header>
 
       {/* Main Workspace */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
         
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-4 mb-8 overflow-x-auto">
+        <div className="flex items-center gap-2.5 pb-4 mb-8 border-b border-slate-200 overflow-x-auto">
           <button
             type="button"
             onClick={() => setActiveTab("news")}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === "news"
-                ? "bg-amber-400 text-slate-950 shadow-md"
-                : "bg-white/5 text-slate-300 hover:bg-white/10"
+              activeTab === "news" ? "bg-amber-500 text-slate-950 border border-amber-400 font-extrabold shadow-md" : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 hover:text-slate-900 shadow-xs"
             }`}
           >
             <Newspaper className="w-4 h-4" />
@@ -420,9 +418,7 @@ export default function AdminDashboardPage() {
             type="button"
             onClick={() => setActiveTab("portfolio")}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === "portfolio"
-                ? "bg-amber-400 text-slate-950 shadow-md"
-                : "bg-white/5 text-slate-300 hover:bg-white/10"
+              activeTab === "portfolio" ? "bg-amber-500 text-slate-950 border border-amber-400 font-extrabold shadow-md" : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 hover:text-slate-900 shadow-xs"
             }`}
           >
             <Building2 className="w-4 h-4" />
@@ -433,9 +429,7 @@ export default function AdminDashboardPage() {
             type="button"
             onClick={() => setActiveTab("team")}
             className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === "team"
-                ? "bg-amber-400 text-slate-950 shadow-md"
-                : "bg-white/5 text-slate-300 hover:bg-white/10"
+              activeTab === "team" ? "bg-amber-500 text-slate-950 border border-amber-400 font-extrabold shadow-md" : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 hover:text-slate-900 shadow-xs"
             }`}
           >
             <Users className="w-4 h-4" />
@@ -449,9 +443,9 @@ export default function AdminDashboardPage() {
         {activeTab === "news" && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
-            <div className="lg:col-span-5 bg-slate-900/80 border border-white/10 rounded-2xl p-6">
-              <h2 className="text-base font-bold text-white flex items-center gap-2 mb-4">
-                <PlusCircle className="w-4 h-4 text-amber-400" />
+            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2 mb-4">
+                <PlusCircle className="w-4 h-4 text-amber-500" />
                 <span>Publikasikan Berita / Promo Baru</span>
               </h2>
 
@@ -464,7 +458,7 @@ export default function AdminDashboardPage() {
 
               <form onSubmit={handleAddNews} className="space-y-4">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Judul Artikel / Promo *
                   </label>
                   <input
@@ -473,19 +467,19 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setNewsTitle(e.target.value)}
                     placeholder="Contoh: Diskon Onboarding Q4 & Bebas Migrasi Excel..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 shadow-xs"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Kategori
                     </label>
                     <select
                       value={newsCategory}
                       onChange={(e) => setNewsCategory(e.target.value)}
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     >
                       <option value="Update Fitur ERP">Update Fitur ERP</option>
                       <option value="Promo Spesial">Promo Spesial</option>
@@ -496,25 +490,25 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Penulis
                     </label>
                     <input
                       type="text"
                       value={newsAuthor}
                       onChange={(e) => setNewsAuthor(e.target.value)}
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     />
                   </div>
                 </div>
 
-                <div className="p-3 bg-white/5 border border-white/10 rounded-xl space-y-2">
-                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-200 cursor-pointer">
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={newsIsPromo}
                       onChange={(e) => setNewsIsPromo(e.target.checked)}
-                      className="rounded accent-amber-400"
+                      className="rounded accent-amber-500"
                     />
                     <span>Tandai sebagai Promo Spesial / Banner Highlight</span>
                   </label>
@@ -525,25 +519,25 @@ export default function AdminDashboardPage() {
                       value={newsPromoBadge}
                       onChange={(e) => setNewsPromoBadge(e.target.value)}
                       placeholder="Teks Badge: PROMO Q4 2026"
-                      className="w-full bg-slate-950 border border-white/15 rounded-lg px-3 py-1.5 text-xs text-amber-300 focus:outline-none"
+                      className="w-full bg-white border border-amber-300 rounded-lg px-3 py-1.5 text-xs text-amber-800 font-bold focus:outline-none shadow-xs"
                     />
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     URL Gambar Cover
                   </label>
                   <input
                     type="text"
                     value={newsImageUrl}
                     onChange={(e) => setNewsImageUrl(e.target.value)}
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 font-mono"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white font-mono shadow-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Konten Lengkap *
                   </label>
                   <textarea
@@ -552,14 +546,14 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setNewsContent(e.target.value)}
                     placeholder="Tuliskan ulasan lengkap, poin penawaran promo, syarat ketentuan..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 leading-relaxed"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 leading-relaxed shadow-xs"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={newsSubmitting}
-                  className="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {newsSubmitting ? "Memproses..." : "Publikasikan Sekarang"}
                 </button>
@@ -569,12 +563,12 @@ export default function AdminDashboardPage() {
             {/* List */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-slate-200">
+                <h3 className="text-sm font-extrabold text-slate-900">
                   Daftar Berita & Promo Tayang ({articles.length})
                 </h3>
                 <button
                   onClick={fetchNews}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5"
+                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
                 >
                   <RefreshCw className="w-4 h-4" />
                 </button>
@@ -587,27 +581,27 @@ export default function AdminDashboardPage() {
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                         {item.category}
                       </span>
                       {item.isPromo && (
-                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
                           {item.promoBadge || "PROMO"}
                         </span>
                       )}
                       <span className="text-[10px] text-slate-400">{item.date}</span>
                     </div>
 
-                    <h4 className="text-sm font-bold text-white hover:text-amber-400 transition-colors">
+                    <h4 className="text-sm font-bold text-slate-900 hover:text-amber-600 transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-xs text-slate-400 line-clamp-2">{item.content}</p>
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">{item.content}</p>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => handleDeleteNews(item.id)}
-                    className="p-2 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all cursor-pointer shrink-0"
+                    className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shrink-0"
                     title="Hapus Artikel"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -624,9 +618,9 @@ export default function AdminDashboardPage() {
         {activeTab === "portfolio" && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
-            <div className="lg:col-span-5 bg-slate-900/80 border border-white/10 rounded-2xl p-6">
-              <h2 className="text-base font-bold text-white flex items-center gap-2 mb-4">
-                <PlusCircle className="w-4 h-4 text-amber-400" />
+            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2 mb-4">
+                <PlusCircle className="w-4 h-4 text-amber-500" />
                 <span>Tambah Klien Portofolio Bengkel Baru</span>
               </h2>
 
@@ -639,7 +633,7 @@ export default function AdminDashboardPage() {
 
               <form onSubmit={handleAddPortfolio} className="space-y-4">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Nama Bengkel Rekanan *
                   </label>
                   <input
@@ -648,12 +642,12 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="Contoh: Bengkel Mobil Sejahtera..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 shadow-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Kategori / Spesialisasi
                   </label>
                   <input
@@ -661,13 +655,13 @@ export default function AdminDashboardPage() {
                     value={clientCategory}
                     onChange={(e) => setClientCategory(e.target.value)}
                     placeholder="Spesialis Kaki-Kaki, Transmisi & AC..."
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 shadow-xs"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Lokasi / Kota
                     </label>
                     <input
@@ -675,11 +669,11 @@ export default function AdminDashboardPage() {
                       value={clientLocations}
                       onChange={(e) => setClientLocations(e.target.value)}
                       placeholder="Kota Semarang, Purwokerto..."
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Jumlah Stall Pitstop
                     </label>
                     <input
@@ -687,13 +681,13 @@ export default function AdminDashboardPage() {
                       value={clientStallCount}
                       onChange={(e) => setClientStallCount(e.target.value)}
                       placeholder="12+ Stall Pitstop"
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Logo / Singkatan Badge
                   </label>
                   <input
@@ -701,12 +695,12 @@ export default function AdminDashboardPage() {
                     value={clientLogoBadge}
                     onChange={(e) => setClientLogoBadge(e.target.value)}
                     placeholder="SEJAHTERA"
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none font-mono"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white font-mono shadow-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Pencapaian / Dampak Operasional *
                   </label>
                   <textarea
@@ -715,14 +709,14 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setClientAchievement(e.target.value)}
                     placeholder="Contoh: Otomasi antrean pitstop dan penurunan kebocoran sparepart modal FIFO 0%..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none leading-relaxed"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 leading-relaxed shadow-xs"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={clientSubmitting}
-                  className="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {clientSubmitting ? "Menyimpan..." : "Simpan Klien Portofolio"}
                 </button>
@@ -732,12 +726,12 @@ export default function AdminDashboardPage() {
             {/* List */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-slate-200">
+                <h3 className="text-sm font-extrabold text-slate-900">
                   Daftar Klien Rekanan ({clients.length})
                 </h3>
                 <button
                   onClick={fetchPortfolio}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
                 >
                   <RefreshCw className="w-4 h-4" />
                 </button>
@@ -750,23 +744,23 @@ export default function AdminDashboardPage() {
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-black text-amber-400 px-2 py-0.5 rounded bg-amber-400/10 border border-amber-400/20">
+                      <span className="text-xs font-black text-amber-700 px-2 py-0.5 rounded bg-amber-50 border border-amber-300">
                         {c.logoBadge}
                       </span>
-                      <span className="text-xs text-slate-300 font-medium">{c.locations}</span>
-                      <span className="text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
+                      <span className="text-xs text-slate-600 font-semibold">{c.locations}</span>
+                      <span className="text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">
                         {c.stallCount}
                       </span>
                     </div>
 
-                    <h4 className="text-sm font-bold text-white">{c.name}</h4>
-                    <p className="text-xs text-slate-400">{c.achievement}</p>
+                    <h4 className="text-sm font-bold text-slate-900">{c.name}</h4>
+                    <p className="text-xs text-slate-600 leading-relaxed">{c.achievement}</p>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => handleDeleteClient(c.id)}
-                    className="p-2 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all cursor-pointer shrink-0"
+                    className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shrink-0"
                     title="Hapus Klien"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -783,9 +777,9 @@ export default function AdminDashboardPage() {
         {activeTab === "team" && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
-            <div className="lg:col-span-5 bg-slate-900/80 border border-white/10 rounded-2xl p-6">
-              <h2 className="text-base font-bold text-white flex items-center gap-2 mb-4">
-                <PlusCircle className="w-4 h-4 text-amber-400" />
+            <div className="lg:col-span-5 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h2 className="text-base font-extrabold text-slate-900 flex items-center gap-2 mb-4">
+                <PlusCircle className="w-4 h-4 text-amber-500" />
                 <span>Tambah / Update Anggota Tim Eksekutif</span>
               </h2>
 
@@ -798,7 +792,7 @@ export default function AdminDashboardPage() {
 
               <form onSubmit={handleAddTeam} className="space-y-4">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Nama Lengkap & Gelar *
                   </label>
                   <input
@@ -807,13 +801,13 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setMemberName(e.target.value)}
                     placeholder="Contoh: Utomo Nugroho..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 shadow-xs"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Role Singkat (Badge)
                     </label>
                     <input
@@ -821,11 +815,11 @@ export default function AdminDashboardPage() {
                       value={memberRole}
                       onChange={(e) => setMemberRole(e.target.value)}
                       placeholder="COO / CEO / CTO"
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                       Jabatan Formal
                     </label>
                     <input
@@ -833,13 +827,13 @@ export default function AdminDashboardPage() {
                       value={memberTitle}
                       onChange={(e) => setMemberTitle(e.target.value)}
                       placeholder="Chief Operating Officer"
-                      className="w-full bg-slate-950 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white shadow-xs"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Subtitle Perusahaan
                   </label>
                   <input
@@ -852,7 +846,7 @@ export default function AdminDashboardPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     URL Foto Portrait Avatar *
                   </label>
                   <input
@@ -861,12 +855,12 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setMemberAvatar(e.target.value)}
                     placeholder="/assets/team/utomo.jpg"
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none font-mono"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white font-mono shadow-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 uppercase mb-1.5">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1.5">
                     Kutipan Testimoni / Visi Kepemimpinan *
                   </label>
                   <textarea
@@ -875,14 +869,14 @@ export default function AdminDashboardPage() {
                     onChange={(e) => setMemberQuote(e.target.value)}
                     placeholder="Tuliskan komitmen, kutipan visi atau testimoni operasional bengkel..."
                     required
-                    className="w-full bg-slate-950 border border-white/15 rounded-xl p-3 text-xs text-white focus:outline-none leading-relaxed"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white focus:ring-2 focus:ring-amber-500/20 leading-relaxed shadow-xs"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={teamSubmitting}
-                  className="w-full py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs tracking-wide transition-all shadow-md active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {teamSubmitting ? "Menyimpan..." : "Simpan Dewan Eksekutif"}
                 </button>
@@ -892,12 +886,12 @@ export default function AdminDashboardPage() {
             {/* List */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-slate-200">
+                <h3 className="text-sm font-extrabold text-slate-900">
                   Daftar Dewan Eksekutif & Testimoni ({teamMembers.length})
                 </h3>
                 <button
                   onClick={fetchTeam}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-white"
+                  className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
                 >
                   <RefreshCw className="w-4 h-4" />
                 </button>
@@ -919,13 +913,13 @@ export default function AdminDashboardPage() {
 
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-bold text-white">{m.name}</h4>
-                      <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-amber-400 text-slate-950">
+                      <h4 className="text-sm font-extrabold text-slate-900">{m.name}</h4>
+                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-500 text-slate-950 shadow-2xs">
                         {m.role}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400">{m.companySubtitle}</p>
-                    <p className="text-xs text-slate-300 italic pt-1 leading-relaxed">
+                    <p className="text-xs text-slate-500 font-semibold">{m.companySubtitle}</p>
+                    <p className="text-xs text-slate-700 italic pt-1 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100 mt-2">
                       &ldquo;{m.quote}&rdquo;
                     </p>
                   </div>
@@ -933,7 +927,7 @@ export default function AdminDashboardPage() {
                   <button
                     type="button"
                     onClick={() => handleDeleteTeam(m.id)}
-                    className="p-2 rounded-xl text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all cursor-pointer shrink-0"
+                    className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer shrink-0"
                     title="Hapus Profil"
                   >
                     <Trash2 className="w-4 h-4" />
