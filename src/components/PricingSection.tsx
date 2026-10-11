@@ -8,7 +8,7 @@ export default function PricingSection() {
   return (
     <section
       id="harga"
-      className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0C1326] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Background ambient lighting in dark mode */}
       <div className="hidden dark:block absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -16,7 +16,7 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-600 dark:text-amber-300 text-xs font-bold tracking-widest uppercase">
             <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
             <span>STRATEGI HARGA KHUSUS UMKM BENGKEL MOBIL</span>
@@ -32,11 +32,11 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch mb-8">
           {pricingTiers.map((tier) => (
             <div
               key={tier.id}
-              className={`rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 relative backdrop-blur-xl hover:-translate-y-2 ${
+              className={`rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 relative backdrop-blur-xl hover:-translate-y-1.5 ${
                 tier.isPopular
                   ? "bg-white dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900/80 dark:to-slate-950/95 border-2 border-amber-400 shadow-xl shadow-amber-500/10 dark:shadow-[0_15px_40px_rgba(245,158,11,0.25)] md:-translate-y-2 hover:shadow-2xl"
                   : "bg-slate-50 dark:bg-white/[0.04] hover:bg-white dark:hover:bg-white/[0.07] border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/25 shadow-sm hover:shadow-xl"
@@ -90,7 +90,7 @@ export default function PricingSection() {
               </div>
 
               {/* Action Button */}
-              <div className="pt-6 mt-6 border-t border-slate-200 dark:border-white/10">
+              <div className="pt-4 mt-4 border-t border-slate-200 dark:border-white/10">
                 <a
                   href={`https://wa.me/6281359433350?text=${encodeURIComponent(
                     `Halo Pak Tomo & Tim BroSlam.Tech, saya tertarik berlangganan paket: ${tier.name} (${tier.pricePerMonth}/bln). Mohon panduan aktivasi sistemnya.`

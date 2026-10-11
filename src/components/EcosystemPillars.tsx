@@ -17,7 +17,7 @@ export default function EcosystemPillars({
   const currentPillar = pillarsData.find((p) => p.id === activeTab) || pillarsData[0];
 
   return (
-    <section id="solusi" className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A1020] dark:to-[#070B14] border-b border-slate-200 dark:border-white/10 transition-colors">
+    <section id="solusi" className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A1020] dark:to-[#070B14] border-b border-slate-200 dark:border-white/10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

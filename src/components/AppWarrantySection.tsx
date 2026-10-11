@@ -48,11 +48,11 @@ export default function AppWarrantySection() {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0B1224] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <section className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0B1224] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5 mb-14">
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-black tracking-widest uppercase">
             <span>ALUR PRESENTASI &amp; JAMINAN SISTEM</span>
           </div>
@@ -65,7 +65,7 @@ export default function AppWarrantySection() {
         </div>
 
         {/* 5-Step Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-8">
           {steps.map((s, idx) => {
             const Icon = s.icon;
             return (

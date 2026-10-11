@@ -18,14 +18,14 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-100 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A0F1E] dark:to-[#04060C] border-t border-slate-200 dark:border-white/10 py-16 text-slate-600 dark:text-slate-400 text-xs relative overflow-hidden transition-colors duration-300">
+    <footer className="bg-slate-100 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0A0F1E] dark:to-[#04060C] border-t border-slate-200 dark:border-white/10 py-12 text-slate-600 dark:text-slate-400 text-xs relative overflow-hidden transition-colors duration-300">
       {/* Subtle bottom ambient light in dark mode */}
       <div className="hidden dark:block absolute bottom-0 left-1/3 w-[500px] h-[250px] bg-blue-600/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         
         {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
           {/* Brand Info */}
           <div className="space-y-4 md:col-span-1">

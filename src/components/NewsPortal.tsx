@@ -38,7 +38,7 @@ export default function NewsPortal() {
   return (
     <section
       id="portal-berita"
-      className="py-24 bg-slate-50 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0D1527] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
+      className="py-12 sm:py-16 bg-slate-50 dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#0D1527] dark:to-[#070B14] relative overflow-hidden border-t border-slate-200 dark:border-white/10 transition-colors duration-300"
     >
       {/* Dynamic Ambient Glows (Only in dark mode) */}
       <div className="hidden dark:block absolute top-1/4 left-1/4 w-[500px] h-[350px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -47,7 +47,7 @@ export default function NewsPortal() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-gradient-to-r dark:from-blue-500/15 dark:to-indigo-500/15 border border-blue-200 dark:border-blue-400/30 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-widest uppercase shadow-xs">
             <Newspaper className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>PORTAL INFORMASI &amp; MEDIA RESMI</span>
@@ -63,7 +63,7 @@ export default function NewsPortal() {
         </div>
 
         {/* Vector Icon Category Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
           
           <button
             type="button"
@@ -133,12 +133,12 @@ export default function NewsPortal() {
         </div>
 
         {/* Dynamic News Cards with Dual Light/Dark Mode Styling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8">
           {filtered.map((art) => (
             <Link
               key={art.id}
               href={`/blog/${art.id}`}
-              className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 group cursor-pointer relative overflow-hidden backdrop-blur-xl hover:-translate-y-2 ${
+              className={`rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group cursor-pointer relative overflow-hidden backdrop-blur-xl hover:-translate-y-1.5 ${
                 art.isPromo
                   ? "bg-amber-50/70 dark:bg-gradient-to-b dark:from-slate-900/90 dark:via-slate-900/60 dark:to-slate-950/90 border-2 border-amber-400 shadow-md hover:shadow-xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] dark:hover:border-amber-400 dark:hover:shadow-[0_20px_45px_rgba(245,158,11,0.22)]"
                   : "bg-white dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.03] dark:to-transparent border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-lg dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-amber-400 dark:hover:border-sky-400/40"
@@ -167,7 +167,7 @@ export default function NewsPortal() {
                 />
               </div>
 
-              <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-[11px] mt-6">
+              <div className="pt-3 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-[11px] mt-4">
                 <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1">
                   <Calendar className="w-3 h-3 text-slate-400 dark:text-slate-500" />
                   <span>{art.date}</span>

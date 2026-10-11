@@ -16,8 +16,8 @@ export default function TentangKamiPage() {
 
       <main className="pt-28">
         {/* Hero About */}
-        <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <section className="py-10 sm:py-14 bg-slate-50 dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
               <Sparkles className="w-3.5 h-3.5" />
               <span>PROFIL PERUSAHAAN &amp; KEPEMIMPINAN</span>
@@ -45,7 +45,7 @@ export default function TentangKamiPage() {
         <AppWarrantySection />
 
         {/* Bottom CTA */}
-        <section className="py-20 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center transition-colors">
+        <section className="py-12 sm:py-14 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center transition-colors">
           <div className="max-w-3xl mx-auto px-4 space-y-6">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
               Siap Membawa Bengkel Mobil Anda Naik Kelas?

@@ -43,11 +43,11 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090F1E] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
+    <section id="faq" className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090F1E] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center space-y-4 mb-14">
+        <div className="text-center space-y-2 mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-amber-400 text-xs font-black tracking-widest uppercase">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>TANYA JAWAB STRATEGIS</span>
@@ -61,7 +61,7 @@ export default function FaqSection() {
         </div>
 
         {/* Accordion */}
-        <div className="space-y-3.5">
+        <div className="space-y-2.5">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (

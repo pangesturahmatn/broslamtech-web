@@ -94,11 +94,11 @@ function RenderStatusBadge({ item }: { item: { label: string; status: "no" | "pa
 
 export default function ComparisonSection() {
   return (
-    <section className="py-24 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090E1C] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <section className="py-12 sm:py-16 bg-white dark:bg-gradient-to-b dark:from-[#070B14] dark:via-[#090E1C] dark:to-[#070B14] relative overflow-hidden border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+        <div className="text-center max-w-3xl mx-auto space-y-2 mb-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold tracking-widest uppercase">
             <span>PERBANDINGAN NYATA</span>
           </div>
