@@ -48,11 +48,6 @@ export default function NewsPortal() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
-            <Newspaper className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>PORTAL INFORMASI &amp; MEDIA RESMI</span>
-          </div>
-          
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Kabar Terkini, Wawasan &amp; Update Promo BroSlam.Tech
           </h2>

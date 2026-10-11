@@ -18,11 +18,6 @@ export default function PricingSection({ onOpenCatalog }: PricingSectionProps) {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
-            <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
-            <span>STRATEGI HARGA KHUSUS UMKM BENGKEL MOBIL</span>
-          </div>
-          
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug [text-wrap:balance]">
             Harga Sewa yang Sangat Ringan di Kantong UMKM
           </h2>

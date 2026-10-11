@@ -48,10 +48,6 @@ export default function FaqSection() {
         
         {/* Header */}
         <div className="text-center space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-amber-400 text-xs font-black tracking-widest uppercase">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>TANYA JAWAB STRATEGIS</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Pertanyaan yang Sering Diajukan Pemilik Bengkel
           </h2>

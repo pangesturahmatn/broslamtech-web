@@ -33,10 +33,6 @@ export default function ProfitCalculator() {
             {/* Left Column: Sliders */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase mb-3">
-                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                  <span>SIMULASI KEBOCORAN MODAL BENGKEL</span>
-                </div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                   Berapa Uang yang Bocor di Bengkel Anda Setiap Bulan?
                 </h2>
