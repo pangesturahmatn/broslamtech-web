@@ -57,7 +57,7 @@ export default function DeviceShowcase() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 dark:bg-slate-900 border border-amber-200 dark:border-slate-800 text-amber-700 dark:text-amber-400 text-xs font-bold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
             <span>ANTARMUKA SISTEM ENTERPRISE</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
@@ -79,7 +79,7 @@ export default function DeviceShowcase() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   isActive
-                    ? "bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25 scale-102"
+                    ? "bg-amber-500 text-slate-950 shadow-md scale-101"
                     : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 border border-slate-200 dark:border-slate-800 shadow-xs"
                 }`}
               >

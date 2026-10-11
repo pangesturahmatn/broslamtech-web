@@ -38,7 +38,7 @@ export default function PortfolioSection() {
         
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
             <Building2 className="w-3.5 h-3.5" />
             <span>PORTOFOLIO BENGKEL &amp; CLIENT SHOWCASE</span>
           </div>
@@ -59,7 +59,7 @@ export default function PortfolioSection() {
           <div className="bg-slate-50 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6 shadow-md dark:shadow-xl transition-all duration-500">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1 rounded-xl bg-amber-100 dark:bg-amber-500/15 border border-amber-300 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 font-mono text-xs font-black">
+                <span className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-mono text-xs font-bold">
                   {currentClient.logoBadge}
                 </span>
                 <div>

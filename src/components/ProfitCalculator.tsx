@@ -23,7 +23,7 @@ export default function ProfitCalculator() {
   return (
     <section id="kalkulator" className="py-8 sm:py-12 bg-white dark:bg-slate-950 relative overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors">
       {/* Background glow */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -33,8 +33,8 @@ export default function ProfitCalculator() {
             {/* Left Column: Sliders */}
             <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-black tracking-widest uppercase mb-3">
-                  <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase mb-3">
+                  <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                   <span>SIMULASI KEBOCORAN MODAL BENGKEL</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
@@ -58,7 +58,7 @@ export default function ProfitCalculator() {
                   step="10"
                   value={omsetJuta}
                   onChange={(e) => setOmsetJuta(parseInt(e.target.value, 10))}
-                  className="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
                 />
                 <div className="flex justify-between text-[11px] text-slate-500 font-semibold">
                   <span>Rp 30 Juta</span>
@@ -80,7 +80,7 @@ export default function ProfitCalculator() {
                   step="1"
                   value={cabang}
                   onChange={(e) => setCabang(parseInt(e.target.value, 10))}
-                  className="w-full h-2.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+                  className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
                 />
                 <div className="flex justify-between text-[11px] text-slate-500 font-semibold">
                   <span>1 Cabang</span>
@@ -92,14 +92,14 @@ export default function ProfitCalculator() {
 
             {/* Right Column: Leakage Result Card */}
             <div className="lg:col-span-5">
-              <div className="rounded-3xl bg-white dark:bg-slate-950 border-2 border-amber-400/80 p-8 shadow-xl relative overflow-hidden space-y-6">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
+              <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-lg shadow-slate-900/5 dark:shadow-none relative overflow-hidden space-y-5">
+                
 
                 <div className="space-y-1">
-                  <span className="text-xs font-black uppercase tracking-wider text-amber-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                     Estimasi Potensi Uang Bocor
                   </span>
-                  <div className="text-3xl sm:text-4xl font-black text-rose-400 tracking-tight flex items-baseline gap-2">
+                  <div className="text-3xl sm:text-4xl font-black text-rose-600 dark:text-rose-400 tracking-tight flex items-baseline gap-2">
                     <span>{formatRupiah(totalLeakPerTahun)}</span>
                     <span className="text-xs font-bold text-slate-400">/ tahun</span>
                   </div>
@@ -147,7 +147,7 @@ export default function ProfitCalculator() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-black text-xs sm:text-sm tracking-wide shadow-xl shadow-amber-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
+                  className="w-full py-3.5 px-6 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm tracking-wide shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
                 >
                   <span>Konsultasikan Solusi Kebocoran Ini</span>
                   <ArrowRight className="w-4 h-4" />

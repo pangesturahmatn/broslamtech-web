@@ -48,7 +48,7 @@ export default function NewsPortal() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 dark:bg-gradient-to-r dark:from-blue-500/15 dark:to-indigo-500/15 border border-blue-200 dark:border-blue-400/30 text-blue-700 dark:text-blue-300 text-xs font-bold tracking-widest uppercase shadow-xs">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
             <Newspaper className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>PORTAL INFORMASI &amp; MEDIA RESMI</span>
           </div>
@@ -140,7 +140,7 @@ export default function NewsPortal() {
               href={`/blog/${art.id}`}
               className={`rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 group cursor-pointer relative overflow-hidden backdrop-blur-xl hover:-translate-y-1.5 ${
                 art.isPromo
-                  ? "bg-amber-50/70 dark:bg-gradient-to-b dark:from-slate-900/90 dark:via-slate-900/60 dark:to-slate-950/90 border-2 border-amber-400 shadow-md hover:shadow-xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] dark:hover:border-amber-400 dark:hover:shadow-[0_20px_45px_rgba(245,158,11,0.22)]"
+                  ? "bg-amber-50/70 dark:bg-gradient-to-b dark:from-slate-900/90 dark:via-slate-900/60 dark:to-slate-950/90 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-sm hover:shadow-md"
                   : "bg-white dark:bg-gradient-to-b dark:from-white/[0.08] dark:via-white/[0.03] dark:to-transparent border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-lg dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-amber-400 dark:hover:border-sky-400/40"
               }`}
             >

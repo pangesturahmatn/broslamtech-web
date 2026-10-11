@@ -17,7 +17,7 @@ export default function PricingSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1.5 mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-600 dark:text-amber-300 text-xs font-bold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
             <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
             <span>STRATEGI HARGA KHUSUS UMKM BENGKEL MOBIL</span>
           </div>
@@ -38,7 +38,7 @@ export default function PricingSection() {
               key={tier.id}
               className={`rounded-2xl p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 relative backdrop-blur-xl hover:-translate-y-1.5 ${
                 tier.isPopular
-                  ? "bg-white dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900/80 dark:to-slate-950/95 border-2 border-amber-400 shadow-xl shadow-amber-500/10 dark:shadow-[0_15px_40px_rgba(245,158,11,0.25)] md:-translate-y-2 hover:shadow-2xl"
+                  ? "bg-white dark:bg-gradient-to-b dark:from-slate-900/95 dark:via-slate-900/80 dark:to-slate-950/95 border-2 border-amber-500 dark:border-amber-400 shadow-xl shadow-slate-900/5 dark:shadow-none md:-translate-y-1.5"
                   : "bg-slate-50 dark:bg-white/[0.04] hover:bg-white dark:hover:bg-white/[0.07] border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/25 shadow-sm hover:shadow-xl"
               }`}
             >

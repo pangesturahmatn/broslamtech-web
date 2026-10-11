@@ -18,8 +18,8 @@ export default function TentangKamiPage() {
         {/* Hero About */}
         <section className="pt-6 pb-3 sm:pt-8 sm:pb-4 bg-slate-50 dark:bg-slate-950 relative overflow-hidden transition-colors">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3.5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black tracking-widest uppercase">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold tracking-wider uppercase">
+              <Sparkles className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>PROFIL PERUSAHAAN &amp; KEPEMIMPINAN</span>
             </div>
             
