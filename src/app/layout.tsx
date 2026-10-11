@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   title: "BroSlam.Tech — Super Platform Digital Bengkel Mobil | Bromo & Slamet Profit Growth",
   description: "BroSlam.Tech: Aplikasi Digital Super Platform untuk Pemilik & Manajemen Multi-Cabang Bengkel Mobil Indonesia. Kendalikan usaha, pantau modal FIFO murni, dan percepat profit bisnis.",
   icons: {
-    icon: "/assets/broslam-tech-icon.svg",
+    icon: "/assets/broslam-globe-logo.png",
+    shortcut: "/assets/broslam-globe-logo.png",
     apple: "/assets/broslam-globe-logo.png",
   },
   openGraph: {
