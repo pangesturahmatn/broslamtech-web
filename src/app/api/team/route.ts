@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+
 const dataFilePath = path.join(process.cwd(), "src/data/team-members.json");
 
 function getTeam() {
@@ -17,6 +19,10 @@ function getTeam() {
 
 function saveTeam(data: any[]) {
   try {
+    const dir = path.dirname(dataFilePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
     fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), "utf8");
     return true;
   } catch (err) {
@@ -26,7 +32,10 @@ function saveTeam(data: any[]) {
 }
 
 export async function GET() {
-  return NextResponse.json({ success: true, data: getTeam() });
+  return NextResponse.json(
+    { success: true, data: getTeam() },
+    { headers: { "Cache-Control": "no-store, max-age=0" } }
+  );
 }
 
 export async function POST(req: Request) {
@@ -54,7 +63,10 @@ export async function POST(req: Request) {
     team.push(newMember);
     saveTeam(team);
 
-    return NextResponse.json({ success: true, data: newMember });
+    return NextResponse.json(
+      { success: true, data: newMember },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
   } catch (err: any) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
@@ -70,7 +82,10 @@ export async function DELETE(req: Request) {
     team = team.filter((m: any) => m.id !== id);
     saveTeam(team);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json(
+      { success: true },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
   } catch (err: any) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
@@ -106,7 +121,10 @@ export async function PUT(req: Request) {
     };
 
     saveTeam(team);
-    return NextResponse.json({ success: true, data: team[index] });
+    return NextResponse.json(
+      { success: true, data: team[index] },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
   } catch (err: any) {
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }

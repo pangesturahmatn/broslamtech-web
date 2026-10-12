@@ -225,7 +225,7 @@ export default function AdminDashboardPage() {
   const fetchTeam = async () => {
     setLoadingTeam(true);
     try {
-      const res = await fetch("/api/team");
+      const res = await fetch("/api/team?t=" + Date.now(), { cache: "no-store" });
       const json = await res.json();
       if (json.success) setTeamMembers(json.data);
     } catch (e) {
@@ -310,6 +310,12 @@ export default function AdminDashboardPage() {
   const handleAvatarFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setTeamMsg("Format file harus berupa gambar (JPG, PNG, WEBP).");
+      return;
+    }
+
     setUploadingAvatar(true);
     setTeamMsg("");
     try {
@@ -319,10 +325,23 @@ export default function AdminDashboardPage() {
         method: "POST",
         body: formData,
       });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        let errorMsg = `Upload gagal (Status ${res.status})`;
+        try {
+          const parsed = JSON.parse(errorText);
+          if (parsed.error) errorMsg = parsed.error;
+        } catch (_) {
+          if (res.status === 413) errorMsg = "Ukuran file terlalu besar (maksimal 50MB).";
+        }
+        throw new Error(errorMsg);
+      }
+
       const json = await res.json();
       if (json.success && json.url) {
         setMemberAvatar(json.url);
-        setTeamMsg("Foto avatar berhasil diunggah!");
+        setTeamMsg("Foto avatar berhasil diunggah! Jangan lupa klik tombol 'Update / Simpan Dewan Eksekutif'.");
       } else {
         setTeamMsg(json.error || "Gagal mengunggah foto.");
       }
@@ -330,6 +349,7 @@ export default function AdminDashboardPage() {
       setTeamMsg("Gagal mengunggah foto: " + err.message);
     } finally {
       setUploadingAvatar(false);
+      e.target.value = "";
     }
   };
 
@@ -646,7 +666,7 @@ export default function AdminDashboardPage() {
               {articles.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-slate-900/60 border border-white/10 rounded-2xl p-4 flex items-start justify-between gap-4"
+                  className="bg-white border border-slate-200 rounded-2xl p-4 flex items-start justify-between gap-4 shadow-xs hover:border-amber-300 transition-all"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
@@ -809,7 +829,7 @@ export default function AdminDashboardPage() {
               {clients.map((c) => (
                 <div
                   key={c.id}
-                  className="bg-slate-900/60 border border-white/10 rounded-2xl p-4 flex items-start justify-between gap-4"
+                  className="bg-white border border-slate-200 rounded-2xl p-4 flex items-start justify-between gap-4 shadow-xs hover:border-amber-300 transition-all"
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center gap-2">
@@ -1018,53 +1038,72 @@ export default function AdminDashboardPage() {
                 </button>
               </div>
 
-              {teamMembers.map((m) => (
-                <div
-                  key={m.id}
-                  className="bg-slate-900/60 border border-white/10 rounded-2xl p-5 flex items-start gap-4"
-                >
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-amber-400/50 shrink-0 bg-slate-800">
-                    <Image
-                      src={m.avatar}
-                      alt={m.name}
-                      fill
-                      className="object-cover object-top"
-                    />
-                  </div>
-
-                  <div className="flex-1 space-y-1">
-                    <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-extrabold text-slate-900">{m.name}</h4>
-                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-500 text-slate-950 shadow-2xs">
-                        {m.role}
-                      </span>
+              {teamMembers.map((m) => {
+                const isEditing = editingTeamId === m.id;
+                return (
+                  <div
+                    key={m.id}
+                    className={`rounded-2xl p-5 flex items-start gap-4 transition-all shadow-xs ${
+                      isEditing
+                        ? "bg-amber-50/60 border-2 border-amber-500 ring-2 ring-amber-400/30"
+                        : "bg-white border border-slate-200 hover:border-amber-300 hover:shadow-sm"
+                    }`}
+                  >
+                    <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-amber-500 shrink-0 bg-slate-100 shadow-xs">
+                      <Image
+                        src={m.avatar || "/assets/team/fuad.jpg"}
+                        alt={m.name}
+                        fill
+                        className="object-cover object-top"
+                      />
                     </div>
-                    <p className="text-xs text-slate-500 font-semibold">{m.companySubtitle}</p>
-                    <p className="text-xs text-slate-700 italic pt-1 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100 mt-2">
-                      &ldquo;{m.quote}&rdquo;
-                    </p>
-                  </div>
 
-                  <div className="flex items-center gap-1 shrink-0">
-                    <button
-                      type="button"
-                      onClick={() => handleEditTeam(m)}
-                      className="p-2 rounded-xl text-slate-500 hover:text-amber-600 hover:bg-amber-50 transition-all cursor-pointer"
-                      title="Edit Profil & Foto"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteTeam(m.id)}
-                      className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer"
-                      title="Hapus Profil"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <div className="flex-1 space-y-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h4 className="text-sm font-black text-slate-900">{m.name}</h4>
+                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-amber-500 text-slate-950 shadow-2xs">
+                          {m.role}
+                        </span>
+                        {isEditing && (
+                          <span className="text-[9.5px] font-bold text-amber-900 bg-amber-200 px-2 py-0.5 rounded uppercase">
+                            Sedang Diedit
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-amber-800 font-bold">
+                        {m.title || m.role} • <span className="text-slate-500 font-medium">{m.companySubtitle}</span>
+                      </p>
+                      <p className="text-xs text-slate-700 italic pt-1 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200 mt-2">
+                        &ldquo;{m.quote}&rdquo;
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => handleEditTeam(m)}
+                        className={`px-3 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-xs ${
+                          isEditing
+                            ? "bg-amber-500 text-slate-950 ring-2 ring-amber-400"
+                            : "bg-amber-500 hover:bg-amber-400 text-slate-950 hover:shadow-sm"
+                        }`}
+                        title="Edit Profil & Foto"
+                      >
+                        <Pencil className="w-3.5 h-3.5" />
+                        <span>Edit</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteTeam(m.id)}
+                        className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 hover:bg-rose-600 hover:text-white transition-all cursor-pointer shadow-xs"
+                        title="Hapus Profil"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

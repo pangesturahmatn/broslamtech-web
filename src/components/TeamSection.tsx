@@ -9,7 +9,7 @@ export default function TeamSection() {
   const [team, setTeam] = useState(defaultTeam);
 
   useEffect(() => {
-    fetch("/api/team")
+    fetch("/api/team?t=" + Date.now(), { cache: "no-store" })
       .then((res) => res.json())
       .then((json) => {
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {

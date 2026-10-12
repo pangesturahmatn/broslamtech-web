@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
@@ -27,7 +29,10 @@ export async function POST(req: Request) {
     fs.writeFileSync(filePath, buffer);
 
     const publicUrl = `/assets/team/${finalFileName}`;
-    return NextResponse.json({ success: true, url: publicUrl });
+    return NextResponse.json(
+      { success: true, url: publicUrl },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
   } catch (err: any) {
     console.error("Upload error:", err);
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
