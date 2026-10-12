@@ -146,6 +146,7 @@ export default function TeamSection() {
                     src={member.avatar}
                     alt={member.name}
                     fill
+                    unoptimized
                     sizes="(max-width: 640px) 100px, 180px"
                     className="object-cover object-top filter brightness-100 group-hover:brightness-105 transition-all duration-300"
                     priority={isCenter}

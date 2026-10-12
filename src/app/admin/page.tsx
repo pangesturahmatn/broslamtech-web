@@ -966,6 +966,7 @@ export default function AdminDashboardPage() {
                         src={memberAvatar || "/assets/team/fuad.jpg"}
                         alt="Preview"
                         fill
+                        unoptimized
                         className="object-cover object-top"
                       />
                     </div>
@@ -1054,6 +1055,7 @@ export default function AdminDashboardPage() {
                         src={m.avatar || "/assets/team/fuad.jpg"}
                         alt={m.name}
                         fill
+                        unoptimized
                         className="object-cover object-top"
                       />
                     </div>
