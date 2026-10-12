@@ -4,6 +4,75 @@ import path from "path";
 
 const dataFilePath = path.join(process.cwd(), "src/data/team-members.json");
 
+const PROTECTED_AVATAR_BASENAMES = new Set([
+  "fuad.jpg",
+  "fuad.svg",
+  "utomo.jpg",
+  "utomo.svg",
+  "pangestu.jpg",
+  "pangestu.svg",
+  "nisa.jpg",
+  "nisa.svg",
+  "hendra.jpg",
+  "hendra.svg",
+]);
+
+function removeOldAvatarFile(avatarPath?: string, currentTeam?: any[]) {
+  if (!avatarPath || typeof avatarPath !== "string") return;
+  if (!avatarPath.startsWith("/assets/team/")) return;
+
+  const fileName = path.basename(avatarPath);
+  if (PROTECTED_AVATAR_BASENAMES.has(fileName.toLowerCase())) return;
+
+  if (currentTeam && currentTeam.some((m: any) => m.avatar === avatarPath)) {
+    return;
+  }
+
+  try {
+    const teamDir = path.resolve(process.cwd(), "public/assets/team");
+    const targetPath = path.resolve(teamDir, fileName);
+
+    if (!targetPath.startsWith(teamDir)) return;
+
+    if (fs.existsSync(targetPath)) {
+      fs.unlinkSync(targetPath);
+      console.log(`[Auto-Cleanup] File avatar lama berhasil dihapus: ${fileName}`);
+    }
+  } catch (err) {
+    console.warn(`[Auto-Cleanup] Gagal menghapus file avatar ${avatarPath}:`, err);
+  }
+}
+
+function cleanupOrphanAvatars() {
+  try {
+    const teamDir = path.resolve(process.cwd(), "public/assets/team");
+    if (!fs.existsSync(teamDir)) return;
+
+    const team = getTeam();
+    const activeAvatarFiles = new Set(
+      team.map((m: any) => path.basename(m.avatar || "")).filter(Boolean)
+    );
+
+    const allFiles = fs.readdirSync(teamDir);
+    const now = Date.now();
+    const TEN_MINUTES_MS = 10 * 60 * 1000;
+
+    for (const file of allFiles) {
+      if (PROTECTED_AVATAR_BASENAMES.has(file.toLowerCase())) continue;
+      if (activeAvatarFiles.has(file)) continue;
+
+      const filePath = path.join(teamDir, file);
+      const stat = fs.statSync(filePath);
+      if (now - stat.mtimeMs > TEN_MINUTES_MS) {
+        fs.unlinkSync(filePath);
+        console.log(`[Auto-Cleanup] Orphan avatar berhasil dibersihkan: ${file}`);
+      }
+    }
+  } catch (err) {
+    console.warn("[Auto-Cleanup] Gagal membersihkan orphan avatars:", err);
+  }
+}
+
 function getTeam() {
   try {
     if (fs.existsSync(dataFilePath)) {
@@ -30,6 +99,8 @@ function saveTeam(data: any[]) {
 }
 
 export async function GET() {
+  cleanupOrphanAvatars();
+
   return NextResponse.json(
     { success: true, data: getTeam() },
     { headers: { "Cache-Control": "no-store, max-age=0" } }
@@ -61,6 +132,8 @@ export async function POST(req: Request) {
     team.push(newMember);
     saveTeam(team);
 
+    cleanupOrphanAvatars();
+
     return NextResponse.json(
       { success: true, data: newMember },
       { headers: { "Cache-Control": "no-store, max-age=0" } }
@@ -77,8 +150,19 @@ export async function DELETE(req: Request) {
     if (!id) return NextResponse.json({ success: false, error: "ID wajib disertakan" }, { status: 400 });
 
     let team = getTeam();
+    const memberToDelete = team.find((m: any) => m.id === id);
+    if (!memberToDelete) {
+      return NextResponse.json({ success: false, error: "Anggota tim tidak ditemukan" }, { status: 404 });
+    }
+
     team = team.filter((m: any) => m.id !== id);
     saveTeam(team);
+
+    if (memberToDelete.avatar) {
+      removeOldAvatarFile(memberToDelete.avatar, team);
+    }
+
+    cleanupOrphanAvatars();
 
     return NextResponse.json(
       { success: true },
@@ -104,6 +188,8 @@ export async function PUT(req: Request) {
       return NextResponse.json({ success: false, error: "Anggota tim tidak ditemukan" }, { status: 404 });
     }
 
+    const previousAvatar = team[index].avatar;
+
     team[index] = {
       ...team[index],
       name: name ?? team[index].name,
@@ -119,6 +205,13 @@ export async function PUT(req: Request) {
     };
 
     saveTeam(team);
+
+    if (avatar && avatar !== previousAvatar) {
+      removeOldAvatarFile(previousAvatar, team);
+    }
+
+    cleanupOrphanAvatars();
+
     return NextResponse.json(
       { success: true, data: team[index] },
       { headers: { "Cache-Control": "no-store, max-age=0" } }
