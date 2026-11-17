@@ -13,7 +13,7 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     id: "starter",
-    tierBadge: "TIER SISTEM: BRONZE / SILVER",
+    tierBadge: "TIER SISTEM: BRONZE",
     name: "Starter (Pemula)",
     subtitle: "Solusi B2B SaaS Khusus UMKM Bengkel Mobil",
     pricePerMonth: "Rp 399.000",

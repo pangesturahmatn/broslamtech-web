@@ -3,6 +3,7 @@
 import React from "react";
 import { pricingTiers } from "../data/pricing-data";
 import { Check, ArrowRight, Layers, HelpCircle } from "lucide-react";
+import PackageComparisonTable from "./PackageComparisonTable";
 
 interface PricingSectionProps {
   onOpenCatalog?: () => void;
@@ -103,10 +104,10 @@ export default function PricingSection({ onOpenCatalog }: PricingSectionProps) {
                 </a>
 
                 <a
-                  href="#perbandingan"
+                  href="#matriks-paket"
                   className="w-full text-center text-[11px] text-slate-500 hover:text-amber-600 dark:text-slate-400 dark:hover:text-amber-400 font-medium block transition-colors"
                 >
-                  Pelajari modul paket ini &darr;
+                  Pelajari matriks perbandingan paket ini &darr;
                 </a>
               </div>
 
@@ -142,6 +143,9 @@ export default function PricingSection({ onOpenCatalog }: PricingSectionProps) {
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
+
+        {/* Feature Comparison Matrix Table (Starter vs Pro Growth vs Enterprise) */}
+        <PackageComparisonTable onOpenCatalog={onOpenCatalog} />
 
       </div>
     </section>
